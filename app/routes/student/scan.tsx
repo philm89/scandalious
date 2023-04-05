@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 
 export default function Scan() {
     return (
-        <main className="overflow-hidden h-screen max-h-screen bg-red-600">
+        <main className="overflow-hidden h-screen max-h-screen">
             <Navbar />
         </main>
     );
