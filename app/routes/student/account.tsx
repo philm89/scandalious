@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
-import Navbar from "./navbar";
+import Navbar from "~/components/navbarStudent";
+
 
 const purchases = [
     {

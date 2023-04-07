@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
-import Navbar from "./navbar";
-import Pagination from "./pagination";
+import Navbar from "~/components/navbarVendor";
+import Pagination from "~/components/pagination";
 
 const purchases = [
     {

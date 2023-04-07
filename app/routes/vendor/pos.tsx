@@ -1,4 +1,4 @@
-import Navbar from "./navbar";
+import Navbar from "~/components/navbarVendor";
 import { Link, NavLink } from "@remix-run/react";
 
 const menuItems = [
@@ -31,7 +31,6 @@ const menuItems = [
         amount: "15฿",
     },
 ]
-
 
 export default function Menu() {
     return (
