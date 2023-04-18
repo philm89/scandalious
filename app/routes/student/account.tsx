@@ -75,24 +75,8 @@ export default function Account() {
                                 </thead>
                                 <tbody>
                                     {purchases.map((item) => {
-                                        if (item.position % 2 == 0) {
-                                            return (
-                                                <tr className="bg-gray-100 border-b">
-                                                    <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.vendor}</td>
-                                                    <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                                        {item.item}
-                                                    </td>
-                                                    <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                                        {item.amount}
-                                                    </td>
-                                                    <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                                        {item.date}
-                                                    </td>
-                                                </tr>
-                                            )
-                                        }
                                         return (
-                                            <tr className="bg-white border-b">
+                                            <tr className="even:bg-gray-100 odd:bg-white border-b">
                                                 <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.vendor}</td>
                                                 <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
                                                     {item.item}

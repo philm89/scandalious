@@ -30,9 +30,6 @@ export default function Index() {
             <Link to="/student" className="grid content-end p-20">
                 <button className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Top Up</button>
             </Link>
-            <Link to="/student" className="grid content-end p-20">
-                <button className="fixed z-90 bottom-20 left-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Refund</button>
-            </Link>
             <Navbar />
         </main>
     );
