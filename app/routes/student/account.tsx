@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/navbarStudent";
+import Pagination from "~/components/pagination";
 
 
 const purchases = [
@@ -63,9 +64,6 @@ export default function Account() {
                                             Vendor
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-4 py-4 text-left">
-                                            Item
-                                        </th>
-                                        <th scope="col" className="text-sm font-medium text-gray-900 px-4 py-4 text-left">
                                             Amount
                                         </th>
                                         <th scope="col" className="text-sm font-medium text-gray-900 px-4 py-4 text-left">
@@ -78,9 +76,6 @@ export default function Account() {
                                         return (
                                             <tr className="even:bg-gray-100 odd:bg-white border-b">
                                                 <td className="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.vendor}</td>
-                                                <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                                    {item.item}
-                                                </td>
                                                 <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
                                                     {item.amount}
                                                 </td>
@@ -96,6 +91,7 @@ export default function Account() {
                     </div>
                 </div>
             </div>
+            <Pagination />
             <Navbar />
         </main>
     );
