@@ -1,60 +1,19 @@
 import Navbar from "~/components/navbarVendor";
 import { useLocation, Link } from "@remix-run/react";
 import { useState, useEffect } from "react";
+import getMenuItemsUtility from "~/utilities/getMenuItems";
 
-const staticMenu = [
-    {
-        id: 1534,
-        name: "Apple Juice",
-        amount: 15,
-        count: 0,
-    },
-    {
-        id: 1535,
-        name: "Krapao",
-        amount: 35,
-        count: 1,
-    },
-    {
-        id: 1536,
-        name: "Brownie",
-        amount: 15,
-        count: 2,
-    },
-    {
-        id: 1537,
-        name: "Ice Cream",
-        amount: 25,
-        count: 1,
-    },
-    {
-        id: 1538,
-        name: "Cake",
-        amount: 15,
-        count: 1,
-    },
-    {
-        id: 1539,
-        name: "Dount",
-        amount: 15,
-        count: 0,
-    },
-    {
-        id: 1540,
-        name: "Muffin",
-        amount: 15,
-        count: 0,
-    },
-]
-
+let menuItemsFromUtility = getMenuItemsUtility()
 
 export default function Checkout() {
     const location = useLocation()
     const menu = location.state
 
-    const [checkoutMenu, setCheckoutMenu] = useState(staticMenu)
+    const [checkoutMenu, setCheckoutMenu] = useState(menuItemsFromUtility)
 
-
+    const calcTotal = checkoutMenu.reduce((total, menu) => {
+        return total + (menu.count * menu.amount);
+    }, 0);
 
     return (
         <main>
@@ -63,7 +22,7 @@ export default function Checkout() {
                 <div className="overflow-x-auto">
                     <div className=" inline-block min-w-full">
                         <div className="overflow-hidden">
-                            <table className="min-w-full">
+                            <table className="min-w-full ml-4">
                                 {checkoutMenu.map((item, i) => {
                                     return (
                                         <tbody key={item.id}>
@@ -84,8 +43,15 @@ export default function Checkout() {
                                         </tbody>
                                     )
                                 })}
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td className="text-md text-gray-900 font-bold px-4 py-4 whitespace-nowrap">Total</td>
+                                        <td className="text-md text-gray-900 font-bold px-4 py-4 whitespace-nowrap">฿{calcTotal}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
-                            <h3>Total</h3>
+
                         </div>
                     </div>
                 </div>

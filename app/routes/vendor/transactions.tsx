@@ -1,55 +1,15 @@
 import { Link } from "@remix-run/react";
+import { useState } from "react";
 import Navbar from "~/components/navbarVendor";
 import Pagination from "~/components/pagination";
+import getVendorTransactionHistory from "~/utilities/getVendorTransactionHistory";
 
-const purchases = [
-    {
-        vendor: "Drink Shop",
-        student: "Josh",
-        amount: "15฿",
-        date: "15/5/2022",
-        position: 1,
-    },
-    {
-        vendor: "Thai Food",
-        student: "Billy",
-        amount: "35฿",
-        date: "17/5/2022",
-        position: 2,
-    },
-    {
-        vendor: "Ice Cream Shop",
-        student: "Franklin",
-        amount: "15฿",
-        date: "1/5/2022",
-        position: 3,
-    },
-    {
-        vendor: "Dessert Shop",
-        student: "Josiah",
-        amount: "25฿",
-        date: "15/4/2022",
-        position: 4,
-    },
-    {
-        vendor: "Bake Shop",
-        student: "Lynn",
-        amount: "15฿",
-        date: "16/6/2022",
-        position: 5,
-    },
-    {
-        vendor: "Bake Shop",
-        student: "Spencer",
-        amount: "15฿",
-        date: "16/6/2022",
-        position: 6,
-    },
-
-]
+let vendorTransactionHistoryFromUtility = getVendorTransactionHistory()
 
 
 export default function Account() {
+    const [vendorTransactionHistory, setVendorTransactionHistory] = useState(vendorTransactionHistoryFromUtility)
+
     return (
         <main className="h-screen max-h-screen">
             <h1 className="flex sticky top-0 justify-center items-center h-10 bg-gray-400">Transaction History</h1>
@@ -72,9 +32,9 @@ export default function Account() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {purchases.map((item) => {
+                                    {vendorTransactionHistory.map((item, i) => {
                                         return (
-                                            <tr className="even:bg-gray-100 odd:bg-white border-b">
+                                            <tr key={item.id} className="even:bg-gray-100 odd:bg-white border-b">
                                                 <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
                                                     {item.student}
                                                 </td>

@@ -20,7 +20,7 @@ export default function MenuCard(props) {
                     <button type="submit" onClick={() => { setModal(true) }} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" >
                         Edit Item
                     </button>
-                    {modal && <Modal openModal={setModal} item={props.item} />}
+                    {modal && <Modal openModal={setModal} menuItems={props} />}
                 </div>
             </div>
         </div>

@@ -1,56 +1,18 @@
 import Navbar from "~/components/navbarVendor";
 import { Link } from "@remix-run/react";
 import { useState } from "react";
+import getMenuItemsUtility from "~/utilities/getMenuItems";
+
+let menuItemsFromUtility = getMenuItemsUtility()
 
 export default function POS() {
 
-    const [menu, setMenu] = useState([
-        {
-            id: 1534,
-            name: "Apple Juice",
-            amount: "15฿",
-            count: 0,
-        },
-        {
-            id: 1535,
-            name: "Krapao",
-            amount: "35฿",
-            count: 1,
-        },
-        {
-            id: 1536,
-            name: "Brownie",
-            amount: "15฿",
-            count: 0,
-        },
-        {
-            id: 1537,
-            name: "Ice Cream",
-            amount: "25฿",
-            count: 1,
-        },
-        {
-            id: 1538,
-            name: "Cake",
-            amount: "15฿",
-            count: 0,
-        },
-        {
-            id: 1539,
-            name: "Dount",
-            amount: "15฿",
-            count: 0,
-        },
-        {
-            id: 1540,
-            name: "Muffin",
-            amount: "15฿",
-            count: 0,
-        },
-    ])
+    const [menuItems, setMenu] = useState(menuItemsFromUtility)
+
+    // Add count variable to the state here
 
     function increaseCount(id: number) {
-        setMenu(menu.map(menu => {
+        setMenu(menuItems.map(menu => {
             if (menu.id === id) {
                 return { ...menu, count: menu.count + 1 }
             } else {
@@ -60,7 +22,7 @@ export default function POS() {
     }
 
     function decreaseCount(id: number) {
-        setMenu(menu.map(menu => {
+        setMenu(menuItems.map(menu => {
             if (menu.id === id) {
                 return { ...menu, count: menu.count - 1 }
             } else {
@@ -74,7 +36,7 @@ export default function POS() {
         <main className="h-screen max-h-screen">
             <h1 className="flex top-0 px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Point of Sale</h1>
             <div className="grid grid-rows-4 grid-flow-col gap-4 m-4 justify-center">
-                {menu.map((item, i) => {
+                {menuItems.map((item, i) => {
                     return (
                         <div key={item.id}>
                             {item.count < 1 ?
@@ -104,13 +66,10 @@ export default function POS() {
                     )
                 })}
             </div>
-            <Link to="/vendor/checkout" state={menu} className="flex justify-end pr-10 w-full">
+            <Link to="/vendor/checkout" state={menuItems} className="flex justify-end pr-10 w-full">
                 <button className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Checkout</button>
             </Link>
             <Navbar />
         </main>
     )
 }
-
-// This goes in the Link to the checkout page.  I removed it for testing purposes.  
-// 
