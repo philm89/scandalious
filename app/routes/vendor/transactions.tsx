@@ -12,7 +12,7 @@ export default function Account() {
 
     return (
         <main className="h-screen max-h-screen">
-            <h1 className="flex sticky top-0 justify-center items-center h-10 bg-gray-400">Transaction History</h1>
+            <h1 className="flex top-0 px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Order History</h1>
             <div className="flex flex-col">
                 <div className="overflow-x-auto">
                     <div className=" inline-block min-w-full">

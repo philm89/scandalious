@@ -5,10 +5,11 @@ import getMenuItemsUtility from "~/utilities/getMenuItems";
 
 let menuItemsFromUtility = getMenuItemsUtility()
 
-export default function Checkout() {
+export default function Checkout(state) {
     const location = useLocation()
     const menu = location.state
 
+    // This needs to change to the state variable being passed in.  I have it set to static for now for testing purposes
     const [checkoutMenu, setCheckoutMenu] = useState(menuItemsFromUtility)
 
     const calcTotal = checkoutMenu.reduce((total, menu) => {
