@@ -1,30 +1,17 @@
-import Navbar from "~/components/navbarVendor";
 import { Link } from "@remix-run/react";
 import { useState, useEffect } from "react";
-import getMenuItemsUtility from "~/utilities/getMenuItems";
+
+import Navbar from "~/components/navbarVendor";
+import POSCardNoCount from "~/components/posCardNoCount"
 import POSCardWithCount from "~/components/posCardWithCount";
+import getMenuItemsUtility from "~/utilities/getMenuItems";
 
 let menuItemsFromUtility = getMenuItemsUtility()
 
 export default function POS() {
-
     const [menuItems, setMenu] = useState(menuItemsFromUtility)
 
-    // Add count variable to the state here
-    // const arrToAddUnitCounts = menuItems.map((element) => ({
-    //     ...element, units: 0
-    // }))
-
-    // setMenu(arrToAddUnitCounts)
-    // console.log(menuItems)
-
     function increaseCount(id: number) {
-        // const hasUnitsTest = menuItems.hasOwnProperty('units')
-        // hasUnitsTest === false ? setMenu(menuItems.map(((element) => ({ ...element, units: 0 })))) : hasUnitsTest
-
-        // setMenu(menuItems.map(menu => !menu.hasOwnProperty('units') ? { ...menu, units: 0 } : menu))
-        // console.log(menuItems)
-
         setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count + 1 } : menu))
     }
 
@@ -41,30 +28,8 @@ export default function POS() {
                     return (
                         <div key={item.id}>
                             {item.count < 1 ?
-                                <div onClick={() => increaseCount(item.id)} className="flex justify-center h-32 w-32 bg-green-500">
-                                    <h1 className="flex justify-center items-center">
-                                        {item.name}
-                                    </h1>
-                                </div> :
-                                <div onClick={() => increaseCount(item.id)} className="grid grid-rows-1 h-32 w-32 bg-green-500">
-                                    <h1 className="grid place-content-center">
-                                        {item.name}
-                                    </h1>
-                                    <div className="grid grid-cols-3 place-content-end ">
-                                        {/* The Subtract Div */}
-                                        <div className="grid place-content-start relative z-2 bg-slate-500">
-                                            <button onClick={() => decreaseCount(item.id)} className="pl-4 text-2xl">-</button>
-                                        </div>
-                                        {/* The Count Div */}
-                                        <div className="grid place-content-center ">
-                                            <h3 className="grid place-content-center text-xl bg-green-500">{item.count}</h3>
-                                        </div>
-                                        {/* The Addition Div */}
-                                        <div className="grid place-content-end bg-slate-500">
-                                            <button onClick={() => increaseCount(item.id)} className="pr-4 text-2xl">+</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <POSCardNoCount increaseCount={increaseCount} state={item} /> :
+                                <POSCardWithCount increaseCount={increaseCount} decreaseCount={decreaseCount} state={item} />
                             }
                         </div>
                     )
@@ -78,7 +43,3 @@ export default function POS() {
         </main>
     )
 }
-
-
-
-            // 

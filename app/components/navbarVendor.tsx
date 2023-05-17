@@ -6,6 +6,7 @@ export default function Navbar() {
         <div className="w-full h-screen">
             <section className="block fixed inset-x-0 bottom-0 z-10 bg-lime-500">
                 <div className="flex justify-between">
+
                     <Link to="/vendor" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                         <svg width="25" height="25" viewBox="0 0 42 42" className="inline-block mb-1">
                             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

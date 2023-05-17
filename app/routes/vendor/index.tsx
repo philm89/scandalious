@@ -1,8 +1,8 @@
-import type { V2_MetaFunction } from "@remix-run/node";
+// import type { V2_MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/navbarVendor";
 
-export const meta: V2_MetaFunction = () => [{ title: "SCANdalous" }];
+// export const meta: V2_MetaFunction = () => [{ title: "SCANdalous" }];
 
 export default function Index() {
     return (
