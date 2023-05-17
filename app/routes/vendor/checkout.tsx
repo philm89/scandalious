@@ -10,7 +10,7 @@ export default function Checkout(state) {
     const menu = location.state
 
     // This needs to change to the state variable being passed in.  I have it set to static for now for testing purposes
-    const [checkoutMenu, setCheckoutMenu] = useState(menuItemsFromUtility)
+    const [checkoutMenu, setCheckoutMenu] = useState(menu)
 
     const calcTotal = checkoutMenu.reduce((total: number, menu) => {
         return total + (menu.count * menu.amount)

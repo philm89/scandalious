@@ -1,73 +1,74 @@
+import { MenuItems } from "~/@types/types"
 
 export default function getMenuItemsUtility() {
     const menuItems = [
         {
             id: 1534,
             name: "Apple Juice",
-            unitPrice: 15,
+            price: 15,
             count: 2,
             order: 1,
             subItems: [
                 {
                     id: 986689567,
                     name: "extra ice",
-                    unitPrice: 10
+                    price: 10
                 }
             ]
         },
         {
             id: 1535,
             name: "Krapao",
-            unitPrice: 35,
+            price: 35,
             count: 1,
             order: 2,
             subItems: [
                 {
                     id: 1564864,
                     name: "Kai Dao",
-                    unitPrice: 25
+                    price: 25
 
                 },
                 {
                     id: 1891534,
                     name: "Extra Rice",
-                    unitPrice: 15
+                    price: 15
 
                 },
                 {
                     id: 189443189,
                     name: "Double Meat",
-                    unitPrice: 20
+                    price: 20
                 },
                 {
                     id: 19808483,
                     name: "Extra Salt",
-                    unitPrice: 15
+                    price: 15
                 },
                 {
                     id: 19886335915,
                     name: "Another Thing",
-                    unitPrice: 5
+                    price: 5
                 },
             ]
         },
         {
             id: 1536,
             name: "Brownie",
-            unitPrice: 15,
+            price: 15,
             count: 0,
             order: 3,
             subItems: [
                 {
                     id: 9567318,
                     name: "Ice Cream",
-                    unitPrice: 25
+                    price: 25
 
                 },
                 {
                     id: 9538195,
                     name: "Sprinkles",
-                    unitPrice: 15
+                    price: 15
 
                 },
             ]
@@ -75,20 +76,20 @@ export default function getMenuItemsUtility() {
         {
             id: 1537,
             name: "Ice Cream",
-            unitPrice: 25,
+            price: 25,
             count: 4,
             order: 4,
             subItems: [
                 {
                     id: 908648619,
                     name: "Sprinkles",
-                    unitPrice: 10
+                    price: 10
 
                 },
                 {
                     id: 5938461591,
                     name: "Other Toppings",
-                    unitPrice: 15
+                    price: 15
 
                 },
             ]
@@ -96,21 +97,21 @@ export default function getMenuItemsUtility() {
         {
             id: 1538,
             name: "Cake",
-            unitPrice: 15,
+            price: 15,
             count: 0,
             order: 5,
         },
         {
             id: 1539,
             name: "Donut",
-            unitPrice: 15,
+            price: 15,
             count: 0,
             order: 6,
         },
         {
             id: 1540,
             name: "Muffin",
-            unitPrice: 15,
+            price: 15,
             count: 0,
             order: 7,
         },

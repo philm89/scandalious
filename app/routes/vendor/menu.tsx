@@ -20,10 +20,9 @@ export default function Menu() {
         The handle and drop code below is converting the event.currentTarget to a number to match the state ID
         I need to add touch events to the drag and drop functionality 
     */
-    const handleDrag = (ev) => {
+    const handleDrag = (ev: Event) => {
         const currentTarget = +ev.currentTarget.id
         setDragId(currentTarget)
-
     }
 
     const handleDrop = (ev) => {
@@ -52,7 +51,7 @@ export default function Menu() {
         <main className="h-screen max-h-screen">
             <div className="flex justify-between top-0 px-4">
                 <h1 className="flex top-0 px-4 justify-start items-center h-16 bg-white font-bold text-2xl">Menu Items</h1>
-                <button onClick={() => { setModal(true) }} className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add Item</button>
+                <button onClick={() => { setModal(true) }} className="fixed z-90 top-4 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add Item</button>
             </div>
             {menu
                 .sort((a, b) => a.order - b.order)
@@ -66,7 +65,7 @@ export default function Menu() {
                         />
                     )
                 })}
-            {modal && <Modal openModal={setModal} state={menu} />}
+            {/* {modal && <Modal openModal={setModal} state={menu} />} */}
             <Navbar />
         </main>
     )

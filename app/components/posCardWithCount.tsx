@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 export default function POSCardWithCount({ increaseCount, decreaseCount, state }) {
     return (
-        <main onClick={() => increaseCount(state.id)} className="grid grid-rows-1 h-32 w-32 border border-slate-400 rounded-md bg-green-500">
+        <main onClick={() => increaseCount(state.id)} className="grid grid-rows-1 h-32 w-32 border border-slate-400 rounded-md bg-green-400">
             <h1 className="grid place-content-center">
                 {state.name}
             </h1>
