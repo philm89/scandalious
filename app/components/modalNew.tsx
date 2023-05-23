@@ -2,12 +2,21 @@ import { Form } from "@remix-run/react"
 import { useState } from "react"
 import { Dialog } from '@headlessui/react'
 
-export default function Modal({ openModal, state }) {
+export default function Modal({ modal, state }) {
     const [inputFields, setInputFields] = useState([])
 
+    function closeModal() {
+        modal(false)
+    }
+
+    function openModal() {
+        modal(true)
+    }
+
     return (
-        <main className="flex h-screen justify-center items-center backdrop-opacity-80 bg-slate-50/80 fixed inset-0 z-50">
-            <div className="flex-col justify-center py-10 px-10 bg-white border border-slate-700 rounded-xl">
+        <Dialog className="">
+            <Dialog.Panel className="">
+                <Dialog.Title>Add Menu Item</Dialog.Title>
                 <Form className="pb-4">
                     <div className="">
                         <h4>Item Name</h4>
@@ -43,9 +52,8 @@ export default function Modal({ openModal, state }) {
                         Delete
                     </button>
                 </div>
-            </div>
-        </main >
+            </Dialog.Panel>
+        </Dialog >
     )
 }
-
 

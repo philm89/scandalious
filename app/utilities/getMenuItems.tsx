@@ -6,27 +6,26 @@ export default function getMenuItemsUtility() {
             id: 1534,
             name: "Apple Juice",
             price: 15,
-            count: 2,
-            order: 1,
+            count: 1,
             subItems: [
                 {
                     id: 986689567,
                     name: "extra ice",
                     price: 10
                 }
-            ]
+            ],
+            bgColor: '#FFFFFF'
         },
         {
             id: 1535,
             name: "Krapao",
-            price: 35,
             count: 1,
-            order: 2,
+            price: 35,
             subItems: [
                 {
                     id: 1564864,
                     name: "Kai Dao",
-                    price: 25
+                    price: 125
 
                 },
                 {
@@ -50,14 +49,14 @@ export default function getMenuItemsUtility() {
                     name: "Another Thing",
                     price: 5
                 },
-            ]
+            ],
+            bgColor: '#FFFFFF'
         },
         {
             id: 1536,
             name: "Brownie",
+            count: 1,
             price: 15,
-            count: 0,
-            order: 3,
             subItems: [
                 {
                     id: 9567318,
@@ -71,14 +70,14 @@ export default function getMenuItemsUtility() {
                     price: 15
 
                 },
-            ]
+            ],
+            bgColor: '#FFFFFF'
         },
         {
             id: 1537,
             name: "Ice Cream",
+            count: 1,
             price: 25,
-            count: 4,
-            order: 4,
             subItems: [
                 {
                     id: 908648619,
@@ -92,28 +91,29 @@ export default function getMenuItemsUtility() {
                     price: 15
 
                 },
-            ]
+            ],
+            bgColor: '#FFFFFF'
         },
         {
             id: 1538,
             name: "Cake",
+            count: 1,
             price: 15,
-            count: 0,
-            order: 5,
+            bgColor: '#FFFFFF'
         },
         {
             id: 1539,
             name: "Donut",
+            count: 1,
             price: 15,
-            count: 0,
-            order: 6,
+            bgColor: '#FFFFFF'
         },
         {
             id: 1540,
             name: "Muffin",
+            count: 1,
             price: 15,
-            count: 0,
-            order: 7,
+            bgColor: '#FFFFFF'
         },
     ]
     return menuItems

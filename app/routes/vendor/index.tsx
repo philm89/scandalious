@@ -8,14 +8,14 @@ export default function Index() {
     return (
         <main className="flex flex-col pt-28 overflow-hidden h-screen max-h-screen">
             <div className="flex justify-center h-56 py-4 content-center">
-                <div className="flex justify-center h-32 w-44 bg-green-500">
-                    <h1 className="flex justify-center items-center">
-                        Vendor Name
+                <div className="flex justify-center h-32 w-44 border border-slate-700 rounded-xl flex-wrap">
+                    <h1 className="flex justify-center items-center text-center px-5">
+                        Praews' Amazing Drink Shop
                     </h1>
                 </div>
             </div>
             <div className="flex justify-center h-56">
-                <div className="flex flex-col justify-center h-32 w-44 px-5 bg-green-500">
+                <div className="flex flex-col justify-center h-32 w-44 px-5 border border-slate-700 rounded-xl">
                     <h1 className="flex justify-center">
                         Daily Sales
                     </h1>

@@ -109,7 +109,7 @@ export default function getVendorTransactionHistory() {
         },
         {
             transactionId: 1675,
-            vendor: "Bake Shop",
+            vendor: "Kanom Shop",
             student: "Spencer",
             items: [
                 {

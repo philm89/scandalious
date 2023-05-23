@@ -10,10 +10,10 @@ export default function Checkout(state) {
     const menu = location.state
 
     // This needs to change to the state variable being passed in.  I have it set to static for now for testing purposes
-    const [checkoutMenu, setCheckoutMenu] = useState(menu)
+    const [checkoutMenu, setCheckoutMenu] = useState(menuItemsFromUtility)
 
     const calcTotal = checkoutMenu.reduce((total: number, menu) => {
-        return total + (menu.count * menu.amount)
+        return total + (menu.count * menu.price)
     }, 0);
 
     return (
@@ -36,7 +36,7 @@ export default function Checkout(state) {
                                                         {item.name}
                                                     </td>
                                                     <td className="text-sm text-gray-900 font-light px-4 py-4 whitespace-nowrap">
-                                                        ฿{item.amount}
+                                                        ฿{item.price}
                                                     </td>
                                                 </tr> :
                                                 null
@@ -57,7 +57,7 @@ export default function Checkout(state) {
                 </div>
             </div>
             <Link to="/vendor/pos" className="fixed z-90 bottom-20 left-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Edit Order</Link>
-            <Link to="/vendor/scan" state={checkoutMenu} className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Complete Order</Link>
+            <Link to="/vendor/scan" state={checkoutMenu} className="fixed z-90 bottom-20 right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Complete Order</Link>
             <Navbar />
         </main >
     )

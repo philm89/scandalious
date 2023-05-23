@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/navbarVendor";
 import { useState, useEffect, useRef } from "react";
-import QRCode from 'node_modules/html5-qrcode'
+import QRCode from 'qrcode'
 
 
 export default function Scan(state) {
@@ -9,17 +9,17 @@ export default function Scan(state) {
     const canvasRef = useRef()
     console.log(state)
 
-    // useEffect(() => {
-    //     QRCode.toCanvas(
-    //         canvasRef.current,
-    //         qrInformation || " ",
-    //         {
-    //             scale: 10
+    useEffect(() => {
+        QRCode.toCanvas(
+            canvasRef.current,
+            qrInformation || " ",
+            {
+                scale: 10
 
-    //         },
-    //         (error) => error && console.log(error)
-    //     )
-    // }, [qrInformation])
+            },
+            (error) => error && console.log(error)
+        )
+    }, [qrInformation])
 
     return (
         <main className="overflow-hidden h-screen max-h-screen">
