@@ -59,6 +59,7 @@ export default function MenuPage() {
                     <p className="flex px-4 mr-4 py-2 justify-end items-center border border-slate-700 rounded-lg">Balance: $1,000</p>
                 </div>
             </div>
+            {/* <SearchBox /> */}
             {menuItems
                 .sort((a, b) => a.order - b.order)
                 .map((item) => {

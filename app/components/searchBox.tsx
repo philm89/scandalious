@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const people = [
     { id: 1, name: 'Wade Cooper' },
@@ -38,7 +39,7 @@ export default function SearchBox() {
                             onChange={(event) => setQuery(event.target.value)}
                         />
                         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-                            <ChevronUpDownIcon
+                            <ChevronDownIcon
                                 className="h-5 w-5 text-gray-400"
                                 aria-hidden="true"
                             />

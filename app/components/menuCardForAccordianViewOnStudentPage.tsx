@@ -13,15 +13,22 @@ export default function MenuCardForAccordianOnStudentPage({ state }) {
                                 Menu Items
                             </h1>
                             {state.items.subItems !== undefined ?
-                                state.items.subItems.map((item) => {
+                                state.items.map((item) => {
                                     return (
-                                        <div key={item.id} className="flex flex-row justify-between border border-slate-700 rounded-md px-2 py-2 my-2">
-                                            <div className="">
-                                                {item.name}
-                                            </div>
-                                            <div>
-                                                ฿ {item.price}
-                                            </div>
+                                        <div>
+                                            {item.subItems.map((item) => {
+                                                return (
+                                                    <div key={item.id} className="flex flex-row justify-between border border-slate-700 rounded-md px-2 py-2 my-2">
+                                                        <div className="">
+                                                            {item.name}
+                                                        </div>
+                                                        <div>
+                                                            ฿ {item.price}
+                                                        </div>
+                                                    </div>
+
+                                                )
+                                            })}
                                         </div>
                                     )
                                 }

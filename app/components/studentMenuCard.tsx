@@ -15,7 +15,7 @@ export default function StudentMenuCard({ state, handleDrag, handleDrop }) {
                 <div className="flex flex-col">
                     <div className="flex flex-row justify-between">
                         <p className="text-lg font-bold text-gray-800 flex-wrap">{state.name}</p>
-                        <p>Queue: 15</p>
+                        {/* <p>Queue: 15</p> */}
                     </div>
                     <p className="pl-4">{state.description}</p>
                 </div>

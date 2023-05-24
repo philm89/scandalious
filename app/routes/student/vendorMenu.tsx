@@ -36,7 +36,7 @@ export default function VendorMenuPage({ state }) {
                             {menuList.items !== undefined ?
                                 menuList.items.map((item) => {
                                     return (
-                                        <div key={item.id} onClick={() => setIsOpen(true)} className="flex flex-col border-b-2 border-gray-100  px-2 py-2 my-1">
+                                        <div key={item.id} onClick={() => setIsOpen(true)} className="flex flex-col border border-gray-700 rounded-lg px-2 py-2 my-1">
                                             <div className="flex flex-row justify-between">
                                                 <div className="flex items-center w-4/5">
                                                     <div>

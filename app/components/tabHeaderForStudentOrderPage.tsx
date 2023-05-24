@@ -38,40 +38,95 @@ export default function TabHeaderForStudentOrderPage() {
                 price: 15,
                 count: 2,
                 total: 30,
+                subItems: [
+                    {
+                        id: 1821,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
         ],
         Approved: [
             {
                 id: 3,
-                title: 'Is tech making coffee better or worse?',
-                date: 'Jan 7',
-                commentCount: 29,
-                shareCount: 16,
+                name: 'Krapao',
+                price: 35,
+                count: 1,
+                total: 111,
+                subItems: [
+                    {
+                        id: 1811,
+                        name: "Fried Egg",
+                        price: 15,
+                    },
+                    {
+                        id: 1812,
+                        name: "Steamed Rice",
+                        price: 11,
+                    },
+                    {
+                        id: 1813,
+                        name: "Crispy Pork",
+                        price: 50,
+                    }
+                ],
             },
             {
                 id: 4,
-                title: 'The most innovative things happening in coffee',
-                date: 'Mar 19',
-                commentCount: 24,
-                shareCount: 12,
+                name: 'Coke',
+                price: 15,
+                count: 2,
+                total: 30,
+                subItems: [
+                    {
+                        id: 1921,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
         ],
         Completed: [
             {
                 id: 5,
-                title: 'Ask Me Anything: 10 answers to your questions about coffee',
-                date: '2d ago',
-                commentCount: 9,
-                shareCount: 5,
+                name: 'Krapao',
+                price: 35,
+                count: 1,
+                total: 111,
+                subItems: [
+                    {
+                        id: 2011,
+                        name: "Fried Egg",
+                        price: 15,
+                    },
+                    {
+                        id: 2012,
+                        name: "Steamed Rice",
+                        price: 11,
+                    },
+                    {
+                        id: 2013,
+                        name: "Crispy Pork",
+                        price: 50,
+                    }
+                ],
             },
             {
                 id: 6,
-                title: "The worst advice we've ever heard about coffee",
-                date: '4d ago',
-                commentCount: 1,
-                shareCount: 2,
+                name: 'Coke',
+                price: 15,
+                count: 2,
+                total: 30,
+                subItems: [
+                    {
+                        id: 2021,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
-        ],
+        ]
     })
 
     return (
@@ -104,18 +159,34 @@ export default function TabHeaderForStudentOrderPage() {
                                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                             )}
                         >
-                            <ul>
-                                {posts.map((post) => (
-                                    <div key={post.id}>
-                                        <div className="flex flex-col">
-                                            <div className="flex flex-row justify-between">
-                                                <p className="text-lg font-bold text-gray-800 flex-wrap">{post.name}</p>
-                                                <p className="pl-4">{post.price}</p>
+
+                            {posts.map((post) => (
+                                <div key={post.id} className="border border-slate-700 rounded-xl my-2">
+                                    <div className="flex flex-col px-2 my-2">
+                                        <div className="flex flex-row justify-between">
+                                            <p className="text-lg font-bold text-gray-800 flex-wrap">{post.name}</p>
+                                            <p className="pl-4">{post.price}</p>
+                                        </div>
+                                        <div>
+                                            {post.subItems.map((item) => {
+                                                return (
+                                                    <div key={item.id} className="flex flex-row justify-between">
+                                                        <p className="text-md font-medium pl-2 text-gray-800 flex-wrap">{item.name}</p>
+                                                        <p className="pl-4">{item.price}</p>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                        <div className="flex flex-row justify-between border-t-2 border-gray-300">
+                                            <div className="text-md font-bold">Total</div>
+                                            <div className="pl-4 font-bold">
+                                                {post.total}
                                             </div>
                                         </div>
                                     </div>
-                                ))}
-                            </ul>
+                                </div>
+                            ))}
+
                         </Tab.Panel>
                     ))}
                 </Tab.Panels>
