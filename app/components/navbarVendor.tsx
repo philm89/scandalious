@@ -17,7 +17,7 @@ export default function Navbar() {
                     </Link>
                     <Link to="/vendor/pos" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                         <ShoppingCartIcon className="inline-block justify-items-center h-8 w-8" />
-                        <span className="block text-xs">POS</span>
+                        <span className="block text-xs">Orders</span>
                     </Link>
                     <Link to="/vendor/transactions" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                         <AdjustmentsHorizontalIcon className="inline-block justify-items-center h-8 w-8" />

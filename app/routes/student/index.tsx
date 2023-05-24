@@ -16,10 +16,8 @@ vendorList.map((item, i) =>
 )
 
 export default function MenuPage() {
-    const [isOpen, setIsOpen] = useState(false)
     const [menuItems, setMenuItems] = useState(menuItemsWithOrderAdded)
     const [dragId, setDragId] = useState(0)
-    const [sideBarData, setSideBarData] = useState({})
 
     /* 
         The handle and drop code below is converting the event.currentTarget to a number to match the state ID
@@ -65,7 +63,7 @@ export default function MenuPage() {
                 .sort((a, b) => a.order - b.order)
                 .map((item) => {
                     return (
-                        <div key={item.id} onClick={() => { setIsOpen(true); setSideBarData(item) }}>
+                        <div key={item.id} >
                             <StudentMenuCard
                                 state={item}
                                 handleDrag={handleDrag}
@@ -74,7 +72,6 @@ export default function MenuPage() {
                         </div>
                     )
                 })}
-            <SidebarVendorViewForStudentMenu open={isOpen} setOpen={setIsOpen} state={sideBarData} />
             <Navbar />
         </main>
     );

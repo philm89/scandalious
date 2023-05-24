@@ -1,11 +1,26 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
 import { SubItems } from '~/@types/types'
 import MenuCardForAccordianOnStudentPage from './menuCardForAccordianViewOnStudentPage'
+import { Link } from '@remix-run/react'
 
 export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }) {
     // console.log(state)
+    // function increaseCount(id: number) {
+    //     // const hasUnitsTest = menuItems.hasOwnProperty('units')
+    //     // hasUnitsTest === false ? setMenu(menuItems.map(((element) => ({ ...element, units: 0 })))) : hasUnitsTest
+
+    //     // setMenu(menuItems.map(menu => !menu.hasOwnProperty('units') ? { ...menu, units: 0 } : menu))
+    //     // console.log(menuItems)
+
+    //     setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count + 1 } : menu))
+    // }
+
+    // function decreaseCount(id: number) {
+    //     setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count - 1 } : menu))
+    // }
+
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -55,14 +70,25 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-200 px-4 py-2">
+                                            <div>
+                                                <div className="flex flex-row justify-start">
+                                                    <h3>Note to Vendor</h3>
+                                                    <p className="pl-2 text-gray-400 text-sm">Optional</p>
+                                                </div>
+                                                <input type='text' name='notesToVendor' placeholder='Add your request to the vendor' className="w-full text-sm h-8 border border-gray-100 my-2"></input>
+                                                <div className="flex flex-row justify-center my-2">
+                                                    <MinusIcon className="text-md h-8 border border-slate-300 rounded-md">-</MinusIcon>
+                                                    <div className="flex items-center px-4 text-xl">2</div>
+                                                    <PlusIcon className="text-md h-8 border border-slate-300 rounded-md">+</PlusIcon>
+                                                </div>
+                                            </div>
                                             <div className="">
-                                                <a
+                                                <button
                                                     onClick={() => setOpen(false)}
-                                                    href="#"
-                                                    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                 >
-                                                    Submit Order
-                                                </a>
+                                                    Add To Basket
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

@@ -5,55 +5,72 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function TabHeader() {
+export default function TabHeaderForVenderOrderPage() {
     let [categories] = useState({
-        Submitted: [
-            // {
-            //     id: 1,
-            //     title: 'Does drinking coffee make you smarter?',
-            //     date: '5h ago',
-            //     commentCount: 5,
-            //     shareCount: 2,
-            // },
-            // {
-            //     id: 2,
-            //     title: "So you've bought coffee... now what?",
-            //     date: '2h ago',
-            //     commentCount: 3,
-            //     shareCount: 2,
-            // },
+        UnApproved: [
+            {
+                id: 1,
+                name: 'Krapao',
+                price: 35,
+                count: 1,
+                total: 111,
+                subItems: [
+                    {
+                        id: 1711,
+                        name: "Fried Egg",
+                        price: 15,
+                    },
+                    {
+                        id: 1712,
+                        name: "Steamed Rice",
+                        price: 11,
+                    },
+                    {
+                        id: 1713,
+                        name: "Crispy Pork",
+                        price: 50,
+                    }
+                ],
+            },
+            {
+                id: 1,
+                name: 'Coke',
+                price: 15,
+                count: 2,
+                total: 30,
+            },
         ],
         Approved: [
-            // {
-            //     id: 1,
-            //     title: 'Is tech making coffee better or worse?',
-            //     date: 'Jan 7',
-            //     commentCount: 29,
-            //     shareCount: 16,
-            // },
-            // {
-            //     id: 2,
-            //     title: 'The most innovative things happening in coffee',
-            //     date: 'Mar 19',
-            //     commentCount: 24,
-            //     shareCount: 12,
-            // },
+            {
+                id: 1,
+                name: 'Is tech making coffee better or worse?',
+                date: 'Jan 7',
+                commentCount: 29,
+                shareCount: 16,
+            },
+            {
+                id: 2,
+                name: 'The most innovative things happening in coffee',
+                date: 'Mar 19',
+                commentCount: 24,
+                shareCount: 12,
+            },
         ],
         Completed: [
-            // {
-            //     id: 1,
-            //     title: 'Ask Me Anything: 10 answers to your questions about coffee',
-            //     date: '2d ago',
-            //     commentCount: 9,
-            //     shareCount: 5,
-            // },
-            // {
-            //     id: 2,
-            //     title: "The worst advice we've ever heard about coffee",
-            //     date: '4d ago',
-            //     commentCount: 1,
-            //     shareCount: 2,
-            // },
+            {
+                id: 1,
+                name: 'Ask Me Anything: 10 answers to your questions about coffee',
+                date: '2d ago',
+                commentCount: 9,
+                shareCount: 5,
+            },
+            {
+                id: 2,
+                name: "The worst advice we've ever heard about coffee",
+                date: '4d ago',
+                commentCount: 1,
+                shareCount: 2,
+            },
         ],
     })
 
