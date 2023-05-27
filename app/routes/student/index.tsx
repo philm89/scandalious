@@ -1,8 +1,7 @@
 import { Link } from "@remix-run/react";
-import { useState } from "react";
+import { useState, useContext, createContext } from "react";
 
 import Navbar from "~/components/navbarStudent";
-import SidebarVendorViewForStudentMenu from "~/components/accordiaForStudentMenuView";
 import SearchBox from "~/components/searchBox";
 import getVendorMenuLists from "~/utilities/getVendorMenusListForStudents";
 import { VendorMenuList } from "~/@types/types";
@@ -26,7 +25,6 @@ export default function MenuPage() {
     const handleDrag = (ev: Event) => {
         const currentTarget = +ev.currentTarget.id
         setDragId(currentTarget)
-        // console.log(currentTarget)
     }
 
     const handleDrop = (ev) => {
@@ -56,7 +54,7 @@ export default function MenuPage() {
             <div className="flex justify-between">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Vendor List</h1>
                 <div className="flex items-center">
-                    <p className="flex px-4 mr-4 py-2 justify-end items-center border border-slate-700 rounded-lg">Balance: $1,000</p>
+                    <Link to="/student/profile" className="flex px-4 mr-4 py-2 justify-end items-center border border-slate-700 rounded-lg">Balance: $1,000</Link>
                 </div>
             </div>
             {/* <SearchBox /> */}

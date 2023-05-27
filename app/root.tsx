@@ -1,5 +1,4 @@
-import type { LinksFunction, LoaderArgs } from "@remix-run/node";
-// import { json } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -32,7 +31,6 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-
         <Outlet />
         <ScrollRestoration />
         <Scripts />

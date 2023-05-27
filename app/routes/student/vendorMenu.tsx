@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@remix-run/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 import Navbar from "~/components/navbarStudent";
@@ -8,15 +8,26 @@ import CheckoutButton from "~/components/checkoutButton";
 import SidebarVendorViewForStudentMenu from "~/components/accordianForStudentMenuView"
 
 
+
 export default function VendorMenuPage({ state }) {
     const location = useLocation()
     const menuList = location.state
     const [isOpen, setIsOpen] = useState(false)
+    const [selectedItem, setSelectedItem] = useState([])
     const [basketItems, setBasketItems] = useState()
+    console.log(basketItems)
 
-    const updateBasket = (id) => {
-        console.log(id)
-    }
+    useEffect(() => {
+        const basketItems = JSON.parse(localStorage.getItem('basketItems'))
+        if ('basketItems') {
+            setBasketItems(basketItems)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    }, [basketItems]);
+
 
     return (
         <main className="overflow-y-auto h-screen max-h-screen">
@@ -36,7 +47,7 @@ export default function VendorMenuPage({ state }) {
                             {menuList.items !== undefined ?
                                 menuList.items.map((item) => {
                                     return (
-                                        <div key={item.id} onClick={() => setIsOpen(true)} className="flex flex-col border border-gray-700 rounded-lg px-2 py-2 my-1">
+                                        <div key={item.id} onClick={() => { setIsOpen(true); setSelectedItem(item) }} className="flex flex-col border border-gray-700 rounded-lg px-2 py-2 my-1">
                                             <div className="flex flex-row justify-between">
                                                 <div className="flex items-center w-4/5">
                                                     <div>
@@ -47,25 +58,6 @@ export default function VendorMenuPage({ state }) {
                                                     ฿ {item.price}
                                                 </div>
                                             </div>
-                                            {/* <div>
-                                                {item.subItems !== undefined ?
-                                                    item.subItems.map((item) => {
-                                                        return (
-                                                            <div key={item.id} className="flex flex-row justify-between pl-2 my-1">
-                                                                <div className="flex items-center">
-                                                                    <div>
-                                                                        {item.name}
-                                                                    </div>
-                                                                </div>
-                                                                <div className="flex">
-                                                                    ฿ {item.price}
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    }) :
-                                                    null
-                                                }
-                                            </div> */}
                                         </div>
                                     )
                                 }
@@ -77,8 +69,10 @@ export default function VendorMenuPage({ state }) {
                     }
                 </div>
             </div>
-            <SidebarVendorViewForStudentMenu open={isOpen} setOpen={setIsOpen} state={menuList} />
-            <ShoppingBagIcon className="fixed z-50 bottom-20 right-8 h-8 w-8" />
+            <SidebarVendorViewForStudentMenu open={isOpen} setOpen={setIsOpen} selectedItem={selectedItem} basketItems={basketItems} setBasketItems={setBasketItems} />
+            <Link to='/student/shoppingCart' state={basketItems}>
+                <ShoppingBagIcon className="fixed z-50 bottom-20 right-8 h-8 w-8" />
+            </Link>
             <Navbar />
         </main >
     );

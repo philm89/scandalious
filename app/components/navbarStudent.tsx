@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import { HomeIcon, ShoppingCartIcon, QrCodeIcon, AdjustmentsHorizontalIcon, RectangleStackIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, ShoppingCartIcon, QrCodeIcon, AdjustmentsHorizontalIcon, RectangleStackIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
 export default function Navbar() {
     return (
@@ -18,9 +18,9 @@ export default function Navbar() {
                         <ShoppingCartIcon className="inline-block justify-items-center h-8 w-8" />
                         <span className="block text-xs">Orders</span>
                     </Link>
-                    <Link to="/student/account" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
-                        <AdjustmentsHorizontalIcon className="inline-block justify-items-center h-8 w-8" />
-                        <span className="block text-xs">History</span>
+                    <Link to="/student/profile" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <UserCircleIcon className="inline-block justify-items-center h-8 w-8" />
+                        <span className="block text-xs">Profile</span>
                     </Link>
                 </div>
             </section>

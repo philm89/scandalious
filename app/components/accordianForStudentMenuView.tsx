@@ -1,12 +1,13 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon, PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
 import { SubItems } from '~/@types/types'
 import MenuCardForAccordianOnStudentPage from './menuCardForAccordianViewOnStudentPage'
 import { Link } from '@remix-run/react'
 
-export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }) {
-    // console.log(state)
+export default function SidebarVendorViewForStudentMenu({ open, setOpen, selectedItem, basketItems, setBasketItems }) {
+    // console.log(selectedItem)
+    // console.log(menuList)
     // function increaseCount(id: number) {
     //     // const hasUnitsTest = menuItems.hasOwnProperty('units')
     //     // hasUnitsTest === false ? setMenu(menuItems.map(((element) => ({ ...element, units: 0 })))) : hasUnitsTest
@@ -20,7 +21,21 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }
     // function decreaseCount(id: number) {
     //     setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count - 1 } : menu))
     // }
+    // useEffect(() => {
+    //     const basketItems = JSON.parse(localStorage.getItem('basketItems'))
+    //     if ('basketItems') {
+    //         setBasketItems(basketItems)
+    //     }
+    // }, [])
 
+    // useEffect(() => {
+    //     localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    // }, [basketItems]);
+
+    function addItemToBasket(itemId) {
+        setBasketItems(basketItems => [...basketItems, itemId])
+
+    }
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -53,7 +68,7 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                             <div className="flex items-start justify-between">
-                                                <Dialog.Title className="text-2xl font-bold text-gray-900">{state.name}</Dialog.Title>
+                                                <Dialog.Title className="text-2xl font-bold text-gray-900">{selectedItem.name}</Dialog.Title>
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
@@ -66,7 +81,7 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }
                                                 </div>
                                             </div>
                                             <div className="mt-2 divide-y divide-gray-200">
-                                                <MenuCardForAccordianOnStudentPage state={state} />
+                                                <MenuCardForAccordianOnStudentPage state={selectedItem} basketItems={basketItems} setBasketItems={setBasketItems} />
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-200 px-4 py-2">
@@ -84,10 +99,10 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, state }
                                             </div>
                                             <div className="">
                                                 <button
-                                                    onClick={() => setOpen(false)}
+                                                    onClick={() => { setOpen(false); addItemToBasket(selectedItem.id) }}
                                                     className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                 >
-                                                    Add To Basket
+                                                    Add To Basket - {selectedItem.price}
                                                 </button>
                                             </div>
                                         </div>

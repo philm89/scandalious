@@ -9,27 +9,32 @@ export default function getVendorMenuLists() {
                 {
                     id: 1610,
                     name: "Coke",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 1620,
                     name: "Pepsi",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 1630,
                     name: "Fanta Orange",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 1640,
                     name: "Fanta Grape",
+                    promoted: true,
                     price: 15,
                 },
                 {
                     id: 1650,
                     name: "Bubble Tea",
                     price: 30,
+                    promoted: true,
                     subItems: [
                         {
                             id: 1651,
@@ -59,6 +64,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1710,
                     name: "Krapao",
+                    promoted: true,
                     price: 35,
                     subItems: [
                         {
@@ -81,6 +87,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1720,
                     name: "Pad Thai",
+                    promoted: true,
                     price: 120,
                     subItems: [
                         {
@@ -110,6 +117,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1810,
                     name: "Vanilla Cone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -132,6 +140,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1820,
                     name: "Chocolate Cone",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -161,6 +170,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1910,
                     name: "Salapao",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -183,6 +193,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 1920,
                     name: "Kanom Kloak",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -212,6 +223,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2010,
                     name: "Muffin",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -234,6 +246,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2020,
                     name: "Scone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -263,6 +276,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2110,
                     name: "Croissant",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -285,6 +299,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2120,
                     name: "Sourdough Loaf of Bread baked with love and affection",
+                    promoted: true,
                     price: 100,
                     subItems: [
                         {
@@ -314,26 +329,31 @@ export default function getVendorMenuLists() {
                 {
                     id: 2210,
                     name: "Coke",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2220,
                     name: "Pepsi",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2230,
                     name: "Fanta Orange",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2240,
                     name: "Fanta Grape",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2250,
                     name: "Bubble Tea",
+                    promoted: false,
                     price: 30,
                     subItems: [
                         {
@@ -364,6 +384,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2310,
                     name: "Krapao",
+                    promoted: true,
                     price: 35,
                     subItems: [
                         {
@@ -386,6 +407,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2320,
                     name: "Pad Thai",
+                    promoted: true,
                     price: 120,
                     subItems: [
                         {
@@ -415,6 +437,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2410,
                     name: "Vanilla Cone",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -437,6 +460,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2420,
                     name: "Chocolate Cone",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -466,6 +490,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2510,
                     name: "Salapao",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -488,6 +513,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2520,
                     name: "Kanom Kloak",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -517,6 +543,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2610,
                     name: "Muffin",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -539,6 +566,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2620,
                     name: "Scone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -568,6 +596,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2710,
                     name: "Croissant",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -590,6 +619,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2720,
                     name: "Sourdough Loaf of Bread baked with love and affection",
+                    promoted: true,
                     price: 100,
                     subItems: [
                         {
@@ -619,26 +649,31 @@ export default function getVendorMenuLists() {
                 {
                     id: 2810,
                     name: "Coke",
+                    promoted: true,
                     price: 15,
                 },
                 {
                     id: 2820,
                     name: "Pepsi",
+                    promoted: true,
                     price: 15,
                 },
                 {
                     id: 2830,
                     name: "Fanta Orange",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2840,
                     name: "Fanta Grape",
+                    promoted: false,
                     price: 15,
                 },
                 {
                     id: 2850,
                     name: "Bubble Tea",
+                    promoted: false,
                     price: 30,
                     subItems: [
                         {
@@ -669,6 +704,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2910,
                     name: "Krapao",
+                    promoted: false,
                     price: 35,
                     subItems: [
                         {
@@ -691,6 +727,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 2920,
                     name: "Pad Thai",
+                    promoted: false,
                     price: 120,
                     subItems: [
                         {
@@ -720,6 +757,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3010,
                     name: "Vanilla Cone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -742,6 +780,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3020,
                     name: "Chocolate Cone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -771,6 +810,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3110,
                     name: "Salapao",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -793,6 +833,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3120,
                     name: "Kanom Kloak",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -822,6 +863,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3210,
                     name: "Muffin",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -844,6 +886,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3220,
                     name: "Scone",
+                    promoted: true,
                     price: 15,
                     subItems: [
                         {
@@ -873,6 +916,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3310,
                     name: "Croissant",
+                    promoted: false,
                     price: 15,
                     subItems: [
                         {
@@ -895,6 +939,7 @@ export default function getVendorMenuLists() {
                 {
                     id: 3320,
                     name: "Sourdough Loaf of Bread baked with love and affection",
+                    promoted: false,
                     price: 100,
                     subItems: [
                         {

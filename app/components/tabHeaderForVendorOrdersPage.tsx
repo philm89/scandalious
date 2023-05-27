@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
+import DropdownForStudentOrderPage from './dropdownForStudentOrderPage'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function TabHeaderForVenderOrderPage() {
+export default function TabHeaderForVendorOrderPage() {
     let [categories] = useState({
-        UnApproved: [
+        Submitted: [
             {
                 id: 1,
                 name: 'Krapao',
@@ -33,45 +34,100 @@ export default function TabHeaderForVenderOrderPage() {
                 ],
             },
             {
-                id: 1,
+                id: 2,
                 name: 'Coke',
                 price: 15,
                 count: 2,
                 total: 30,
+                subItems: [
+                    {
+                        id: 1821,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
         ],
         Approved: [
             {
-                id: 1,
-                name: 'Is tech making coffee better or worse?',
-                date: 'Jan 7',
-                commentCount: 29,
-                shareCount: 16,
+                id: 3,
+                name: 'Krapao',
+                price: 35,
+                count: 1,
+                total: 111,
+                subItems: [
+                    {
+                        id: 1811,
+                        name: "Fried Egg",
+                        price: 15,
+                    },
+                    {
+                        id: 1812,
+                        name: "Steamed Rice",
+                        price: 11,
+                    },
+                    {
+                        id: 1813,
+                        name: "Crispy Pork",
+                        price: 50,
+                    }
+                ],
             },
             {
-                id: 2,
-                name: 'The most innovative things happening in coffee',
-                date: 'Mar 19',
-                commentCount: 24,
-                shareCount: 12,
+                id: 4,
+                name: 'Coke',
+                price: 15,
+                count: 2,
+                total: 30,
+                subItems: [
+                    {
+                        id: 1921,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
         ],
         Completed: [
             {
-                id: 1,
-                name: 'Ask Me Anything: 10 answers to your questions about coffee',
-                date: '2d ago',
-                commentCount: 9,
-                shareCount: 5,
+                id: 5,
+                name: 'Krapao',
+                price: 35,
+                count: 1,
+                total: 111,
+                subItems: [
+                    {
+                        id: 2011,
+                        name: "Fried Egg",
+                        price: 15,
+                    },
+                    {
+                        id: 2012,
+                        name: "Steamed Rice",
+                        price: 11,
+                    },
+                    {
+                        id: 2013,
+                        name: "Crispy Pork",
+                        price: 50,
+                    }
+                ],
             },
             {
-                id: 2,
-                name: "The worst advice we've ever heard about coffee",
-                date: '4d ago',
-                commentCount: 1,
-                shareCount: 2,
+                id: 6,
+                name: 'Coke',
+                price: 15,
+                count: 2,
+                total: 30,
+                subItems: [
+                    {
+                        id: 2021,
+                        name: "Extra Ice",
+                        price: 15
+                    }
+                ]
             },
-        ],
+        ]
     })
 
     return (
@@ -104,34 +160,36 @@ export default function TabHeaderForVenderOrderPage() {
                                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                             )}
                         >
-                            <ul>
-                                {posts.map((post) => (
-                                    <li
-                                        key={post.id}
-                                        className="relative rounded-md p-3 hover:bg-gray-100"
-                                    >
-                                        <h3 className="text-sm font-medium leading-5">
-                                            {post.title}
-                                        </h3>
-
-                                        <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                                            <li>{post.date}</li>
-                                            <li>&middot;</li>
-                                            <li>{post.commentCount} comments</li>
-                                            <li>&middot;</li>
-                                            <li>{post.shareCount} shares</li>
-                                        </ul>
-
-                                        <a
-                                            href="#"
-                                            className={classNames(
-                                                'absolute inset-0 rounded-md',
-                                                'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2'
-                                            )}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
+                            {posts.map((post) => (
+                                <div key={post.id} className="border border-slate-700 rounded-xl my-2">
+                                    <div className="flex flex-col px-2 my-2">
+                                        <div className="flex flex-row justify-between">
+                                            <p className="text-lg font-bold text-gray-800 flex-wrap">{post.name}</p>
+                                            <p className="pl-4">{post.price}</p>
+                                        </div>
+                                        <div>
+                                            {post.subItems.map((item) => {
+                                                return (
+                                                    <div key={item.id} className="flex flex-row justify-between">
+                                                        <p className="text-md font-medium pl-2 text-gray-800 flex-wrap">{item.name}</p>
+                                                        <p className="pl-4">{item.price}</p>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                        <div className="flex flex-row justify-between border-t-2 border-gray-300">
+                                            <div className="text-md font-bold">Total</div>
+                                            <div className="pl-4 font-bold">
+                                                {post.total}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-row justify-between px-2">
+                                            <button className="w-1/2 rounded-lg py-1 px-1 text-sm font-medium text-blue-700 border border-gray-300">Reject Order</button>
+                                            <button className="w-1/2 rounded-lg py-1 px-1 text-sm font-medium  text-blue-700 border border-gray-300">Accept Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </Tab.Panel>
                     ))}
                 </Tab.Panels>

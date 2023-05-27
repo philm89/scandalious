@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
+import DropdownForStudentOrderPage from './dropdownForStudentOrderPage'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -159,7 +160,6 @@ export default function TabHeaderForStudentOrderPage() {
                                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                             )}
                         >
-
                             {posts.map((post) => (
                                 <div key={post.id} className="border border-slate-700 rounded-xl my-2">
                                     <div className="flex flex-col px-2 my-2">
@@ -183,10 +183,13 @@ export default function TabHeaderForStudentOrderPage() {
                                                 {post.total}
                                             </div>
                                         </div>
+                                        <div className="flex flex-row justify-between px-2">
+                                            <button className="w-1/2 rounded-lg py-1 px-1 text-sm font-medium text-blue-700 border border-gray-300">Edit Order</button>
+                                            <button className="w-1/2 rounded-lg py-1 px-1 text-sm font-medium  text-blue-700 border border-gray-300">Cancel Order</button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
-
                         </Tab.Panel>
                     ))}
                 </Tab.Panels>
