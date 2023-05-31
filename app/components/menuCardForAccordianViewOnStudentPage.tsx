@@ -2,17 +2,16 @@ import { Form, useLocation, Link } from "@remix-run/react";
 import { setRandomFallback } from "bcryptjs";
 import { useEffect, useState } from "react";
 
-export default function MenuCardForAccordianOnStudentPage({ state, basketItems, setBasketItems }) {
-    // console.log(state)
+export default function MenuCardForAccordianOnStudentPage({ selectedItem, basketItems, setBasketItems }) {
 
     function addOptionalItem(e) {
+        console.log(e.target.checked)
         e.target.checked !== false ?
-            setBasketItems(basketItems => [...basketItems, e.target.value])
+            setBasketItems(basketItems => [...basketItems, +e.target.value])
             :
             setBasketItems(basketItems.filter((item) => {
                 return item !== e.target.value
             }))
-
     }
 
     return (
@@ -23,8 +22,8 @@ export default function MenuCardForAccordianOnStudentPage({ state, basketItems, 
                     <p className="flex items-center pl-2 text-gray-400 text-sm">Optional</p>
                 </div>
                 <div>
-                    {state.subItems !== undefined ?
-                        state.subItems.map((item) => {
+                    {selectedItem.subItems !== undefined ?
+                        selectedItem.subItems.map((item) => {
                             return (
                                 <label key={item.id} htmlFor={`subItem_${item.id}`} className="flex justify-between border border-gray-700 rounded-lg px-2 py-2 my-1">
                                     <div className="flex flex-row items-center">
@@ -40,11 +39,20 @@ export default function MenuCardForAccordianOnStudentPage({ state, basketItems, 
                         }) :
                         null
                     }
-
                 </div>
             </div>
         </main>
     )
 }
 
+// [ 
+//     {
+//         id: 1531561,
+//         subItem: [
+//             {
+//                 id: 156458648
+//             }
+//         ]
+//     }
+// ]
 

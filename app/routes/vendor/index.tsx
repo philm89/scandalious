@@ -2,8 +2,6 @@
 import { Link } from "@remix-run/react";
 import Navbar from "~/components/navbarVendor";
 
-// export const meta: V2_MetaFunction = () => [{ title: "SCANdalous" }];
-
 export default function Index() {
     return (
         <main className="flex flex-col pt-28 overflow-hidden h-screen max-h-screen">
@@ -20,7 +18,7 @@ export default function Index() {
                         Daily Sales
                     </h1>
                     <h1 className="flex justify-center">
-                        $1,000
+                        ฿1,000
                     </h1>
                 </div>
             </div>

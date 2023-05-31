@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
 import DropdownForStudentOrderPage from './dropdownForStudentOrderPage'
+import { Link } from '@remix-run/react'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function TabHeaderForStudentOrderPage() {
-    let [categories] = useState({
+export default function TabHeaderForStudentOrderPage({ state }) {
+    console.log(state)
+    const [ordersCategories, setOrdersCategories] = useState({
         Submitted: [
             {
                 id: 1,
@@ -134,7 +136,7 @@ export default function TabHeaderForStudentOrderPage() {
         <div className="w-full max-w-md px-2 py-2 sm:px-0">
             <Tab.Group>
                 <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
-                    {Object.keys(categories).map((category) => (
+                    {Object.keys(ordersCategories).map((category) => (
                         <Tab
                             key={category}
                             className={({ selected }) =>
@@ -152,7 +154,7 @@ export default function TabHeaderForStudentOrderPage() {
                     ))}
                 </Tab.List>
                 <Tab.Panels className="mt-2">
-                    {Object.values(categories).map((posts, idx) => (
+                    {Object.values(ordersCategories).map((orders, idx) => (
                         <Tab.Panel
                             key={idx}
                             className={classNames(
@@ -160,15 +162,15 @@ export default function TabHeaderForStudentOrderPage() {
                                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                             )}
                         >
-                            {posts.map((post) => (
-                                <div key={post.id} className="border border-slate-700 rounded-xl my-2">
+                            {orders.map((order) => (
+                                <div key={order.id} className="border border-slate-700 rounded-xl my-2">
                                     <div className="flex flex-col px-2 my-2">
                                         <div className="flex flex-row justify-between">
-                                            <p className="text-lg font-bold text-gray-800 flex-wrap">{post.name}</p>
-                                            <p className="pl-4">{post.price}</p>
+                                            <p className="text-lg font-bold text-gray-800 flex-wrap">{order.name}</p>
+                                            <p className="pl-4">{order.price}</p>
                                         </div>
                                         <div>
-                                            {post.subItems.map((item) => {
+                                            {order.subItems.map((item) => {
                                                 return (
                                                     <div key={item.id} className="flex flex-row justify-between">
                                                         <p className="text-md font-medium pl-2 text-gray-800 flex-wrap">{item.name}</p>
@@ -180,7 +182,7 @@ export default function TabHeaderForStudentOrderPage() {
                                         <div className="flex flex-row justify-between border-t-2 border-gray-300">
                                             <div className="text-md font-bold">Total</div>
                                             <div className="pl-4 font-bold">
-                                                {post.total}
+                                                {order.total}
                                             </div>
                                         </div>
                                         <div className="flex flex-row justify-between px-2">

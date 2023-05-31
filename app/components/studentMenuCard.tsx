@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function StudentMenuCard({ state, handleDrag, handleDrop }) {
 
     return (
-        <Link to="/student/vendorMenu" prefetch="intent" state={state} className="my-2">
+        <Link to="/student/VendorMenus" prefetch="intent" state={state} className="my-2">
             <div
                 id={state.id}
                 draggable={true}

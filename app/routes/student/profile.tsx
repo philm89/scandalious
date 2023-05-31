@@ -1,5 +1,6 @@
 import Navbar from "~/components/navbarStudent";
 import { UserCircleIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { Link } from "@remix-run/react";
 
 export default function ProfilePage() {
 
@@ -19,10 +20,10 @@ export default function ProfilePage() {
                     <button className="flex justify-start mx-2 px-2">Contact Support</button>
                     <ChevronRightIcon className="inline-block h-4 w-4" />
                 </div>
-                <div className="flex flex-row justify-between py-2">
-                    <button className="flex justify-start mx-2 px-2">Top Up</button>
+                <Link to="/student/Account" className="flex flex-row justify-between py-2">
+                    <p className="flex justify-start mx-2 px-2">Top Up</p>
                     <ChevronRightIcon className="inline-block h-4 w-4" />
-                </div>
+                </Link>
             </div>
             <Navbar />
         </main>

@@ -7,34 +7,9 @@ import { Link } from '@remix-run/react'
 
 export default function SidebarVendorViewForStudentMenu({ open, setOpen, selectedItem, basketItems, setBasketItems }) {
     // console.log(selectedItem)
-    // console.log(menuList)
-    // function increaseCount(id: number) {
-    //     // const hasUnitsTest = menuItems.hasOwnProperty('units')
-    //     // hasUnitsTest === false ? setMenu(menuItems.map(((element) => ({ ...element, units: 0 })))) : hasUnitsTest
-
-    //     // setMenu(menuItems.map(menu => !menu.hasOwnProperty('units') ? { ...menu, units: 0 } : menu))
-    //     // console.log(menuItems)
-
-    //     setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count + 1 } : menu))
-    // }
-
-    // function decreaseCount(id: number) {
-    //     setMenu(menuItems.map(menu => menu.id === id ? { ...menu, count: menu.count - 1 } : menu))
-    // }
-    // useEffect(() => {
-    //     const basketItems = JSON.parse(localStorage.getItem('basketItems'))
-    //     if ('basketItems') {
-    //         setBasketItems(basketItems)
-    //     }
-    // }, [])
-
-    // useEffect(() => {
-    //     localStorage.setItem('basketItems', JSON.stringify(basketItems));
-    // }, [basketItems]);
 
     function addItemToBasket(itemId) {
         setBasketItems(basketItems => [...basketItems, itemId])
-
     }
 
     return (
@@ -81,7 +56,7 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, selecte
                                                 </div>
                                             </div>
                                             <div className="mt-2 divide-y divide-gray-200">
-                                                <MenuCardForAccordianOnStudentPage state={selectedItem} basketItems={basketItems} setBasketItems={setBasketItems} />
+                                                <MenuCardForAccordianOnStudentPage selectedItem={selectedItem} basketItems={basketItems} setBasketItems={setBasketItems} />
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-200 px-4 py-2">

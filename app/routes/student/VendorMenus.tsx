@@ -5,8 +5,7 @@ import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import Navbar from "~/components/navbarStudent";
 import { VendorMenuList } from "~/@types/types";
 import CheckoutButton from "~/components/checkoutButton";
-import SidebarVendorViewForStudentMenu from "~/components/accordianForStudentMenuView"
-
+import SidebarVendorViewForStudentMenu from "~/components/SidebarVendorViewForStudentMenu"
 
 
 export default function VendorMenuPage({ state }) {
@@ -15,7 +14,7 @@ export default function VendorMenuPage({ state }) {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState([])
     const [basketItems, setBasketItems] = useState()
-    console.log(basketItems)
+    const [shoppingCart, setShoppingCart] = useState()
 
     useEffect(() => {
         const basketItems = JSON.parse(localStorage.getItem('basketItems'))
