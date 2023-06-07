@@ -9,45 +9,8 @@ import StudentMenuCard from "~/components/studentMenuCard";
 
 let vendorList: VendorMenuList[] = getVendorMenuLists()
 
-let menuItemsWithOrderAdded = []
-vendorList.map((item, i) =>
-    menuItemsWithOrderAdded.push({ ...item, order: i })
-)
-
 export default function MenuPage() {
-    const [menuItems, setMenuItems] = useState(menuItemsWithOrderAdded)
-    const [dragId, setDragId] = useState(0)
-
-    /* 
-        The handle and drop code below is converting the event.currentTarget to a number to match the state ID
-        I need to add touch events to the drag and drop functionality 
-    */
-    const handleDrag = (ev: Event) => {
-        const currentTarget = +ev.currentTarget.id
-        setDragId(currentTarget)
-    }
-
-    const handleDrop = (ev) => {
-        const currentTarget = +ev.currentTarget.id
-        setDragId(currentTarget)
-
-        const dragMenu = menuItems.find((menu) => menu.id === dragId);
-        const dropMenu = menuItems.find((menu) => menu.id === currentTarget);
-
-        const dragMenuOrder: number = dragMenu.order;
-        const dropMenuOrder: number = dropMenu.order;
-
-        const newMenuOrder = menuItems.map((menu) => {
-            if (menu.id === dragId) {
-                menu.order = dropMenuOrder;
-            }
-            if (menu.id === currentTarget) {
-                menu.order = dragMenuOrder;
-            }
-            return menu;
-        });
-        setMenuItems(newMenuOrder)
-    }
+    const [menuItems, setMenuItems] = useState(vendorList)
 
     return (
         <main className="overflow-y-auto h-screen max-h-screen">
@@ -58,19 +21,15 @@ export default function MenuPage() {
                 </div>
             </div>
             {/* <SearchBox /> */}
-            {menuItems
-                .sort((a, b) => a.order - b.order)
-                .map((item) => {
-                    return (
-                        <div key={item.id} >
-                            <StudentMenuCard
-                                state={item}
-                                handleDrag={handleDrag}
-                                handleDrop={handleDrop}
-                            />
-                        </div>
-                    )
-                })}
+            {menuItems.map((item) => {
+                return (
+                    <div key={item.id} >
+                        <StudentMenuCard
+                            state={item}
+                        />
+                    </div>
+                )
+            })}
             <Navbar />
         </main>
     );
