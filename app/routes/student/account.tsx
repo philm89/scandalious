@@ -2,7 +2,6 @@ import { Link } from "@remix-run/react";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 
 import Navbar from "~/components/navbarStudent";
-import Pagination from "~/components/pagination";
 
 export default function Account() {
     return (

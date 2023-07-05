@@ -2,15 +2,15 @@ import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon, PlusIcon, MinusIcon } from '@heroicons/react/24/outline'
 import { SubItems } from '~/@types/types'
-import MenuCardForAccordianOnStudentPage from './menuCardForAccordianViewOnStudentPage'
+import MenuCard from './menuCardSideBar'
 import { Link } from '@remix-run/react'
 
-export default function SidebarVendorViewForStudentMenu({ open, setOpen, selectedItem, basketItems, setBasketItems }) {
-    // console.log(selectedItem)
+export default function SidebarVendorViewForStudentMenu({ open, setOpen, sideBarItem, basketItems, setBasketItems }) {
 
-    function addItemToBasket(itemId) {
-        setBasketItems(basketItems => [...basketItems, itemId])
+    function addItemToBasket(itemId: number) {
+        setBasketItems(basketItems => ([...basketItems, itemId]))
     }
+    console.log(basketItems)
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -43,7 +43,7 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, selecte
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                             <div className="flex items-start justify-between">
-                                                <Dialog.Title className="text-2xl font-bold text-gray-900">{selectedItem.name}</Dialog.Title>
+                                                <Dialog.Title className="text-2xl font-bold text-gray-900">{sideBarItem.name}</Dialog.Title>
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
@@ -56,14 +56,18 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, selecte
                                                 </div>
                                             </div>
                                             <div className="mt-2 divide-y divide-gray-200">
-                                                <MenuCardForAccordianOnStudentPage selectedItem={selectedItem} basketItems={basketItems} setBasketItems={setBasketItems} />
+                                                <MenuCard
+                                                    sideBarItem={sideBarItem}
+                                                    basketItems={basketItems}
+                                                    setBasketItems={setBasketItems}
+                                                />
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-200 px-4 py-2">
                                             <div>
                                                 <div className="flex flex-row justify-start">
                                                     <h3>Note to Vendor</h3>
-                                                    <p className="pl-2 text-gray-400 text-sm">Optional</p>
+                                                    <p className="flex items-center pl-2 text-gray-400 text-sm">Optional</p>
                                                 </div>
                                                 <input type='text' name='notesToVendor' placeholder='Add your request to the vendor' className="w-full text-sm h-8 border border-gray-100 my-2"></input>
                                                 <div className="flex flex-row justify-center my-2">
@@ -74,10 +78,10 @@ export default function SidebarVendorViewForStudentMenu({ open, setOpen, selecte
                                             </div>
                                             <div className="">
                                                 <button
-                                                    onClick={() => { setOpen(false); addItemToBasket(selectedItem.id) }}
+                                                    onClick={() => { setOpen(false); addItemToBasket(sideBarItem.id) }}
                                                     className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                 >
-                                                    Add To Basket - {selectedItem.price}
+                                                    Add To Basket - {sideBarItem.price}
                                                 </button>
                                             </div>
                                         </div>

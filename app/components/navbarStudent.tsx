@@ -14,9 +14,9 @@ export default function Navbar() {
                         <RectangleStackIcon className="inline-block justify-items-center h-8 w-8" />
                         <span className="block text-xs">Home</span>
                     </Link>
-                    <Link to="/student/Orders" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                    <Link to="/student/Activity" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                         <ShoppingCartIcon className="inline-block justify-items-center h-8 w-8" />
-                        <span className="block text-xs">Orders</span>
+                        <span className="block text-xs">Activity</span>
                     </Link>
                     <Link to="/student/Profile" className="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                         <UserCircleIcon className="inline-block justify-items-center h-8 w-8" />

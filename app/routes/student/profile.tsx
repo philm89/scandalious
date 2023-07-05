@@ -24,6 +24,9 @@ export default function ProfilePage() {
                     <p className="flex justify-start mx-2 px-2">Top Up</p>
                     <ChevronRightIcon className="inline-block h-4 w-4" />
                 </Link>
+                <Link to="/vendor/menu" className="grid content-end p-20">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Vendor Home</button>
+                </Link>
             </div>
             <Navbar />
         </main>

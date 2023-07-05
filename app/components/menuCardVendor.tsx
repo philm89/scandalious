@@ -1,25 +1,15 @@
 import { Form, useLocation, Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 
-import Dropdown from "./dropdownForMenuPage";
+import Dropdown from "./dropdownVendorMenuPage";
 
-export default function MenuCard({ state, handleDrag, handleDrop }) {
+export default function MenuCard({ state }) {
 
     // I still need to fix the grid layout below.  I need the price and currency symbol to flex align to the right
 
     return (
         <main className="px-2">
-            <div
-                id={state.id}
-                draggable={true}
-                onDragOver={(ev) => ev.preventDefault()}
-                onDragStart={handleDrag}
-                onDrop={handleDrop}
-                // onTouchMove={(ev) => ev.preventDefault()}
-                // onTouchStart={handleDrag}
-                // onTouchEnd={handleDrop}
-                className="relative border border-slate-700 bg-white m-1 px-4 py-2 rounded-lg"
-            >
+            <div className="relative border border-slate-700 bg-white m-1 px-4 py-2 rounded-lg">
                 <div className="grid grid-cols-6 pr-3">
                     <div className="grid justify-items-start col-span-5">
                         <p className="text-lg font-bold text-gray-800 flex-wrap">{state.name}</p>
@@ -46,8 +36,8 @@ export default function MenuCard({ state, handleDrag, handleDrop }) {
                         }) :
                         undefined
                     }
-                    <Dropdown />
                 </div>
+                <Dropdown state={state} />
             </div>
         </main>
     )

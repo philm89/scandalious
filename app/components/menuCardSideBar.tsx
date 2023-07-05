@@ -2,10 +2,10 @@ import { Form, useLocation, Link } from "@remix-run/react";
 import { setRandomFallback } from "bcryptjs";
 import { useEffect, useState } from "react";
 
-export default function MenuCardForAccordianOnStudentPage({ selectedItem, basketItems, setBasketItems }) {
+export default function MenuCardForAccordianOnStudentPage({ sideBarItem, basketItems, setBasketItems }) {
 
     function addOptionalItem(e) {
-        console.log(e.target.checked)
+        console.log(e.target.value)
         e.target.checked !== false ?
             setBasketItems(basketItems => [...basketItems, +e.target.value])
             :
@@ -22,10 +22,10 @@ export default function MenuCardForAccordianOnStudentPage({ selectedItem, basket
                     <p className="flex items-center pl-2 text-gray-400 text-sm">Optional</p>
                 </div>
                 <div>
-                    {selectedItem.subItems !== undefined ?
-                        selectedItem.subItems.map((item) => {
+                    {sideBarItem.subItems !== undefined ?
+                        sideBarItem.subItems.map((item) => {
                             return (
-                                <label key={item.id} htmlFor={`subItem_${item.id}`} className="flex justify-between border border-gray-700 rounded-lg px-2 py-2 my-1">
+                                <label key={item.id} htmlFor={`subItem_${item.id}`} className="flex justify-between border border-gray-300 rounded-lg px-2 py-2 my-1">
                                     <div className="flex flex-row items-center">
                                         <input type="checkbox" id={`subItem_${item.id}`} value={item.id} onChange={addOptionalItem} className="flex items-center"></input>
                                         <label className="pl-2">{item.name}</label>
@@ -44,15 +44,4 @@ export default function MenuCardForAccordianOnStudentPage({ selectedItem, basket
         </main>
     )
 }
-
-// [ 
-//     {
-//         id: 1531561,
-//         subItem: [
-//             {
-//                 id: 156458648
-//             }
-//         ]
-//     }
-// ]
 

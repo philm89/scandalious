@@ -2,12 +2,12 @@ import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import { Link } from '@remix-run/react';
 
-export default function Dropdown() {
+export default function Dropdown({ state }) {
     return (
         <div className="absolute top-0 right-0 w-40 text-right">
-            <Menu as="div" className="relative z-40 inline-block text-left">
+            <Menu as="div" className="relative inline-block text-left z-10">
                 <Menu.Button className="">
-                    <EllipsisVerticalIcon className='relative top-2 right-0 h-7 w-7' />
+                    <EllipsisVerticalIcon className="relative -z-10 top-2 right-0 h-7 w-7" />
                 </Menu.Button>
                 <Transition
                     enter="transition duration-100 ease-out"
@@ -24,6 +24,7 @@ export default function Dropdown() {
                                     className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     to="/vendor/editMenuItem"
+                                    state={state}
                                 >
                                     {active ? (
                                         <EditActiveIcon
@@ -36,7 +37,7 @@ export default function Dropdown() {
                                             aria-hidden="true"
                                         />
                                     )}
-                                    Edit Item
+                                    Edit Item Opt A
                                 </Link>
                             )}
                         </Menu.Item>
@@ -45,7 +46,30 @@ export default function Dropdown() {
                                 <Link
                                     className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                    to="/vendor/editMenuItem"
+                                    to="/vendor/editMenuItemOptionB"
+                                    state={state}
+                                >
+                                    {active ? (
+                                        <EditActiveIcon
+                                            className="mr-2 h-5 w-5"
+                                            aria-hidden="true"
+                                        />
+                                    ) : (
+                                        <EditInactiveIcon
+                                            className="mr-2 h-5 w-5"
+                                            aria-hidden="true"
+                                        />
+                                    )}
+                                    Edit Item Opt B
+                                </Link>
+                            )}
+                        </Menu.Item>
+                        <Menu.Item>
+                            {({ active }) => (
+                                <Link
+                                    className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                    to="/vendor/menu"
                                 >
                                     {active ? (
                                         <DeleteActiveIcon

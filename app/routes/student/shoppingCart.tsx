@@ -8,9 +8,9 @@ export default function ShoppingCart({ state }) {
     const basketItems = location.state
 
     const clearLocalStorage = () => {
-        // setbasketitems([])
         localStorage.clear()
     }
+
 
     return (
         <main className="overflow-hidden h-screen max-h-screen">
@@ -78,7 +78,7 @@ export default function ShoppingCart({ state }) {
                 </div>
             </div>
 
-            <Link to="/student/Orders" state={basketItems} className="grid content-end p-10">
+            <Link to="/student/Activity" state={basketItems} className="grid content-end p-10">
                 <button onClick={() => clearLocalStorage} className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Submit Order</button>
             </Link>
             <Navbar />

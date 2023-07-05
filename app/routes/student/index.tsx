@@ -1,11 +1,12 @@
-import { Link } from "@remix-run/react";
-import { useState, useContext, createContext } from "react";
+import { Link, useLoaderData } from "@remix-run/react";
+import { useState } from "react";
 import SearchBox from "~/components/searchBox";
 
 import Navbar from "~/components/navbarStudent";
 import getVendorMenuLists from "~/utilities/getVendorMenusListForStudents";
 import { VendorMenuList } from "~/@types/types";
 import StudentMenuCard from "~/components/studentMenuCard";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 let vendorList: VendorMenuList[] = getVendorMenuLists()
 
@@ -25,11 +26,14 @@ export default function MenuPage() {
                 return (
                     <div key={item.id} >
                         <StudentMenuCard
-                            state={item}
+                            individualVendorObject={item}
                         />
                     </div>
                 )
             })}
+            <Link to='/student/shoppingCart'>
+                <ShoppingBagIcon className="fixed z-50 bottom-20 bg-slate-50 border border-slate-300 right-8 h-10 w-10" />
+            </Link>
             <Navbar />
         </main>
     );

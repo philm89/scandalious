@@ -1,7 +1,5 @@
 import { Link, useLocation } from "@remix-run/react";
-import DropdownForStudentOrderPage from "~/components/dropdownForStudentOrderPage";
 import Navbar from "~/components/navbarStudent";
-import TabHeaderForStudentOrderPage from "~/components/tabHeaderForStudentOrderPage";
 
 export default function OrderPage(state) {
     const location = useLocation()
@@ -13,10 +11,7 @@ export default function OrderPage(state) {
             <div className="flex justify-between">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Orders</h1>
             </div>
-            <TabHeaderForStudentOrderPage state={menuList} />
-            {/* <Link to="/vendor" className="grid content-end p-10">
-                <button className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Vendor Home</button>
-            </Link> */}
+
             <Navbar />
         </main>
     );

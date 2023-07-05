@@ -34,6 +34,7 @@ export class VendorItemList {
     id: number
     name: string
     price: number
+    promoted?: boolean
     subItems?: VendorSubItemsList[] | []
 }
 
