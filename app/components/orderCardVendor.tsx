@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react"
 
 
 export default function OrderCard({ state }) {
-    // console.log(state)
+
     return (
         <main className="px-2">
             {state.map((item) => {

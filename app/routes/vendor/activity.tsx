@@ -26,6 +26,11 @@ export default function POS() {
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Activity</h1>
                 <button onClick={() => { setIsOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Set Limits</button>
             </div>
+            <ul className="grid grid-cols-3 border-b border-slate-300 m-2">
+                <li className="grid justify-center font-bold">New</li>
+                <li className="grid justify-center">Prepared</li>
+                <li className="grid justify-center">Completed</li>
+            </ul>
             <OrderCard state={menuItems} />
             <SetLimitSidBar open={isOpen} setOpen={setIsOpen} state={menuItems} />
             <Navbar />

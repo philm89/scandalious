@@ -37,7 +37,7 @@ export default function Dropdown({ state }) {
                                             aria-hidden="true"
                                         />
                                     )}
-                                    Edit Item Opt A
+                                    Edit Item
                                 </Link>
                             )}
                         </Menu.Item>
@@ -46,30 +46,7 @@ export default function Dropdown({ state }) {
                                 <Link
                                     className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                    to="/vendor/editMenuItemOptionB"
-                                    state={state}
-                                >
-                                    {active ? (
-                                        <EditActiveIcon
-                                            className="mr-2 h-5 w-5"
-                                            aria-hidden="true"
-                                        />
-                                    ) : (
-                                        <EditInactiveIcon
-                                            className="mr-2 h-5 w-5"
-                                            aria-hidden="true"
-                                        />
-                                    )}
-                                    Edit Item Opt B
-                                </Link>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Link
-                                    className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                    to="/vendor/menu"
+                                    to="/vendor/"
                                 >
                                     {active ? (
                                         <DeleteActiveIcon

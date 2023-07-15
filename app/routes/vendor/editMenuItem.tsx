@@ -12,7 +12,7 @@ export default function EditMenuItem({ state }) {
     return (
         <main className="h-screen max-h-screen">
             <div className="flex justify-between top-0 px-4">
-                <h1 className="flex top-0 px-4 justify-start items-center h-16 bg-white font-bold text-2xl">Edit Item Page Option A</h1>
+                <h1 className="flex top-0 px-4 justify-start items-center h-16 bg-white font-bold text-2xl">Edit Item </h1>
             </div>
             <Form>
                 <div className="px-4 divide-y divide-gray-200">

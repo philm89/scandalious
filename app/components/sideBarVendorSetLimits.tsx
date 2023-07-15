@@ -4,12 +4,6 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Form } from '@remix-run/react'
 
 export default function SetLimitSidBar({ open, setOpen, state }) {
-    // console.log(state)
-    const [counter, setCounter] = useState(0)
-
-    const addMoreInputFieldsButtonClick = () => {
-        setCounter(counter + 1)
-    }
 
     return (
         <Transition.Root show={open} as={Fragment}>
