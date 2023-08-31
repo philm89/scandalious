@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
@@ -8,31 +8,75 @@ generator client {
 }
 
 model User {
-  id    String @id @default(cuid())
-  email String @unique
+  id                String              @id @default(cuid())
+  email             String              @unique
+  role              Role        
+  firstName         String              @db.VarChar(50)
+  lastName          String              @db.VarChar(50)
+  description       String?
+  vendorName        String?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
 
-  password Password?
-  notes    Note[]
+  password          Password?
+  orders            Orders[]
 }
 
 model Password {
-  hash String
+  hash              String
 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String @unique
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId            String              @unique
 }
 
-model Note {
-  id    String @id @default(cuid())
-  title String
-  body  String
+model Orders {
+  id                String              @id @default(cuid())
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId            String
+  orderItems        MenuItems[]         @relation("Orders")
+}
+
+model MenuItems {
+  id                String              @id @default(cuid())
+  name              String      
+  price             Int
+  quantity          Int
+  description       String?
+  promoted          Boolean             @default(false)
+
+  displayOrder      Int                 @default(autoincrement())
+  menuItemType      MenuItemType
+  order             Orders              @relation("Orders", fields: [orderId], references: [id])
+  orderId           String
+  // subMenuItems      SubMenuItems[]      @relation("MenuItem")
+}
+
+// model SubMenuItems {
+//   id                String              @id @default(cuid())
+//   name              String
+//   price             Int
+//   quantity          Int
+//   description       String?
+
+//   displayOrder      Int                 @default(autoincrement())
+//   mainItem          MenuItems           @relation("MenuItem", fields: [menuItemId], references: [id])
+//   menuItemId        String        
+// }
+
+enum Role {
+  STUDENT
+  VENDOR
+  PARENT
+  SCHOOLADMIN
+  SUPERADMIN
+}
+
+enum MenuItemType {
+  MAINITEM
+  SUBITEM
 }

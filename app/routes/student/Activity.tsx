@@ -1,10 +1,9 @@
 import { Link, useLocation } from "@remix-run/react";
 import Navbar from "~/components/navbarStudent";
 
-export default function OrderPage(state) {
+export default function OrderPage({ state }) {
     const location = useLocation()
     const menuList = location.state
-    // console.log(menuList)
 
     return (
         <main className="overflow-hidden h-screen max-h-screen">

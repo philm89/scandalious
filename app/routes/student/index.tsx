@@ -2,10 +2,11 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import SearchBox from "~/components/searchBox";
 
+
 import Navbar from "~/components/navbarStudent";
 import getVendorMenuLists from "~/utilities/getVendorMenusListForStudents";
-import { VendorMenuList } from "~/@types/types";
-import StudentMenuCard from "~/components/studentMenuCard";
+import { VendorMenuList, VendorItemList } from "~/@types/types";
+// import StudentMenuCard from "~/components/studentMenuCard";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 let vendorList: VendorMenuList[] = getVendorMenuLists()
@@ -37,4 +38,34 @@ export default function MenuPage() {
             <Navbar />
         </main>
     );
+}
+
+function StudentMenuCard({ individualVendorObject }) {
+    return (
+        <Link to="/student/vendorMenuPage" state={individualVendorObject} className="my-2 z-20">
+            <div className="border border-slate-700 bg-white mx-2 my-2 px-4 py-2 rounded-lg">
+                <div className="flex flex-col">
+                    <div className="flex flex-row justify-between">
+                        <p className="text-lg font-bold text-gray-800 flex-wrap">{individualVendorObject.name}</p>
+                    </div>
+                    <div className="flex flex-row justify-start">
+                        {individualVendorObject.items.map((item: VendorItemList) => {
+                            return (
+                                item.promoted !== false ?
+                                    <div key={item.id} className="flex flex-row justify-between w-1/2 m-2 border border-slate-700 rounded-md z-10">
+                                        <div className="flex truncate p-2">
+                                            {item.name}
+                                        </div>
+                                        <div className="flex p-2">
+                                            {item.price}
+                                        </div>
+                                    </div> :
+                                    null
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
+        </Link>
+    )
 }
