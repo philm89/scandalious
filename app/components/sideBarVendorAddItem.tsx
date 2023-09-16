@@ -4,11 +4,13 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { Form } from '@remix-run/react'
 
 export default function AddMenuItemSideBar({ open, setOpen }) {
+    const [menuItem, setMenuItem] = useState()
     const [counter, setCounter] = useState(0)
     const [toggleSwitch, setToggleSwitch] = useState(false)
 
     const addMoreInputFieldsButtonClick = () => {
         setCounter(counter + 1)
+        // console.log(counter)
     }
 
     return (
@@ -85,21 +87,9 @@ export default function AddMenuItemSideBar({ open, setOpen }) {
                                                                 />
                                                             </Switch>
                                                         </div>
-                                                        <div>
-                                                            <h1 className="text-md font-medium text-gray-900 mt-4">Sub Items</h1>
-                                                            <div className="grid grid-cols-3 mt-2 border-t border-gray-200">
-                                                                <h4 className="col-span-2 mt-2 text-xs max-w-max px-1 bg-white z-10 ml-2">Item Name</h4>
-                                                                <h4 className="mt-2 text-xs max-w-max px-1 bg-white z-10 ml-2">Item Price</h4>
-                                                                <input type="text" name="name" placeholder='Extra Rice' className="col-span-2 border border-slate-700 pl-2 p-2 rounded -mt-2 mr-3 text-slate-700"></input>
-                                                                <input type="number" name="unitPrice" placeholder='15' className="border border-slate-700 rounded pl-2 p-2 -mt-2 text-slate-700"></input>
-                                                            </div>
-                                                            <div className="flex flex-row justify-between">
-                                                                <p className="flex justify-start items-center w-3/4 ml-2">Default Daily Limit</p>
-                                                                <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
-                                                            </div>
-                                                            <div className="flex justify-end mt-2">
-                                                                <button className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add Sub Item</button>
-                                                            </div>
+                                                        <SubItemInputFields />
+                                                        <div className="flex justify-end mt-2">
+                                                            <button onClick={() => addMoreInputFieldsButtonClick()} className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-2 rounded">Add Sub Item</button>
                                                         </div>
                                                     </div>
                                                 </Form>
@@ -124,5 +114,23 @@ export default function AddMenuItemSideBar({ open, setOpen }) {
                 </div>
             </Dialog>
         </Transition.Root>
+    )
+}
+
+function SubItemInputFields() {
+    return (
+        <div>
+            <h1 className="text-md font-medium text-gray-900 mt-4">Sub Items</h1>
+            <div className="grid grid-cols-3 mt-2 border-t border-gray-200">
+                <h4 className="col-span-2 mt-2 text-xs max-w-max px-1 bg-white z-10 ml-2">Item Name</h4>
+                <h4 className="mt-2 text-xs max-w-max px-1 bg-white z-10 ml-2">Item Price</h4>
+                <input type="text" name="name" placeholder='Extra Rice' className="col-span-2 border border-slate-700 pl-2 p-2 rounded -mt-2 mr-3 text-slate-700"></input>
+                <input type="number" name="unitPrice" placeholder='15' className="border border-slate-700 rounded pl-2 p-2 -mt-2 text-slate-700"></input>
+            </div>
+            <div className="flex flex-row justify-between">
+                <p className="flex justify-start items-center w-3/4 ml-2">Default Daily Limit</p>
+                <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
+            </div>
+        </div>
     )
 }

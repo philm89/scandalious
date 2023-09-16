@@ -1,10 +1,15 @@
+/**
+ * We need to limit the azure function to last 30 days worth of transactions.
+ * @returns 
+ */
+
 export default function GetStudentOrders() {
     const getStudentOrders = [
         {
             orderId: 1500,
             shopName: "The Canteena",
             orderTotal: 300,
-            transDate: "2023-09-14T09:46:56+0000",
+            createdAt: "2020-09-14T09:46:56+0000",
             orderStatus: "COMPLETED",
             items: [
                 {
@@ -42,8 +47,8 @@ export default function GetStudentOrders() {
             orderId: 1501,
             shopName: "The Drink Shop",
             orderTotal: 300,
-            transDate: "2023-08-14T09:46:56+0000",
-            orderStatus: "SUBMITTED",
+            createdAt: "2022-08-13T14:42:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1630,
@@ -69,8 +74,8 @@ export default function GetStudentOrders() {
             orderId: 1502,
             shopName: "ChaTraMoo",
             orderTotal: 300,
-            transDate: "2023-07-14T14:36:46+0000",
-            orderStatus: "PREPARED",
+            createdAt: "2023-07-12T04:25:56+0000",
+            orderStatus: "SUBMITTED",
             items: [
                 {
                     id: 1620,
@@ -117,8 +122,8 @@ export default function GetStudentOrders() {
             orderId: 1503,
             shopName: "Specialty Drinks",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
-            orderStatus: "COMPLETED",
+            createdAt: "2023-06-11T16:17:56+0000",
+            orderStatus: "PREPARED",
             items: [
                 {
                     id: 1610,
@@ -140,7 +145,7 @@ export default function GetStudentOrders() {
             orderId: 1504,
             shopName: "Fantasia",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
+            createdAt: "2023-05-10T05:06:56+0000",
             orderStatus: "COMPLETED",
             items: [
                 {
@@ -157,8 +162,8 @@ export default function GetStudentOrders() {
             orderId: 1505,
             shopName: "The Bubble Tea Shop",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
-            orderStatus: "SUBMITTED",
+            createdAt: "2023-04-09T22:04:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1650,
@@ -174,8 +179,8 @@ export default function GetStudentOrders() {
             orderId: 1506,
             shopName: "Pizza Hut",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
-            orderStatus: "PREPARED",
+            createdAt: "2023-03-08T05:19:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
@@ -197,7 +202,7 @@ export default function GetStudentOrders() {
             orderId: 1507,
             shopName: "ThipSamai",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
+            createdAt: "2023-02-07T07:34:56+0000",
             orderStatus: "COMPLETED",
             items: [
                 {
@@ -214,7 +219,7 @@ export default function GetStudentOrders() {
             orderId: 1508,
             shopName: "Miyazaki",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
+            createdAt: "2023-01-06T09:38:56+0000",
             orderStatus: "COMPLETED",
             items: [
                 {
@@ -237,8 +242,8 @@ export default function GetStudentOrders() {
             orderId: 1509,
             shopName: "KFC",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
-            orderStatus: "SUBMITTED",
+            createdAt: "2022-01-06T09:38:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
@@ -254,8 +259,8 @@ export default function GetStudentOrders() {
             orderId: 1510,
             shopName: "The Shop with an indredibly long name to demonstrate that we should probably put a character limit on this field",
             orderTotal: 300,
-            transDate: "1997-07-16T19:20:30.451Z",
-            orderStatus: "PREPARED",
+            createdAt: "2020-01-06T09:38:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
@@ -269,6 +274,9 @@ export default function GetStudentOrders() {
         },
 
     ]
-    return getStudentOrders
+
+    const sortedStudentOrders = getStudentOrders.sort((a, b) => -a.createdAt.localeCompare(b.createdAt))
+    console.log(`Get Student Orders Utility Function`, sortedStudentOrders)
+    return sortedStudentOrders
 }
 

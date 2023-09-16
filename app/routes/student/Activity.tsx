@@ -26,29 +26,53 @@ export default function ActivityPage() {
             <div className="">
                 {orderList.map((item) => {
                     return (
-                        item.orderStatus === "PREPARED" ?
-                            <PreparedCard
-                                key={item.orderId}
-                                individualOrderObject={item}
-                                open={sideBarIsOpen}
-                                setOpen={setSideBarIsOpen}
-                                setSideBarItem={setSideBarItem}
-                            /> :
-                            item.orderStatus === "SUBMITTED" ?
-                                <SubmittedCard
-                                    key={item.orderId}
-                                    individualOrderObject={item}
-                                    open={sideBarIsOpen}
-                                    setOpen={setSideBarIsOpen}
-                                    setSideBarItem={setSideBarItem}
-                                /> :
-                                <CompletedOrdersCard
-                                    key={item.orderId}
-                                    individualOrderObject={item}
-                                    open={sideBarIsOpen}
-                                    setOpen={setSideBarIsOpen}
-                                    setSideBarItem={setSideBarItem}
-                                />
+                        <div className="flex flex-col border border-slate-700 rounded-lg my-2 mx-2 -z-10"
+                            key={item.orderId}
+                            onClick={() => { setSideBarIsOpen(true) }}>
+                            <div className="grid grid-cols-2">
+                                <div>
+                                    <div className="flex flex-row text-sm ml-2">
+                                        {DateTimeFunctionTH(item.createdAt)}
+                                    </div>
+                                    <div className="flex ml-2">
+                                        {item.shopName}
+                                    </div>
+                                    <div className="flex ml-2 font-semibold">
+                                        {item.orderStatus === "SUBMITTED" ?
+                                            <p>Preparing Your Order</p> :
+                                            item.orderStatus === "PREPARED" ?
+                                                <p>Ready to Collect</p> :
+                                                item.orderStatus === "COMPLETED" ?
+                                                    <p>Completed</p> :
+                                                    null
+                                        }
+                                    </div>
+                                </div>
+                                <div className="flex justify-end items-center mr-2">
+                                    &#3647;{item.orderTotal}
+                                </div>
+                            </div>
+                            <div className="">
+                                {item.orderStatus === "SUBMITTED" ?
+                                    <div className="flex flex-row justify-between px-2">
+                                        <button
+                                            className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300"
+                                            onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
+                                        >
+                                            Edit Order
+                                        </button>
+                                        <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium  text-blue-700 border border-gray-300">Cancel Order</button>
+                                    </div> :
+                                    item.orderStatus === "PREPARED" ?
+                                        <p className="my-2"></p> :
+                                        item.orderStatus === "COMPLETED" ?
+                                            <div className="flex justify-end px-2">
+                                                <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300">Reorder</button>
+                                            </div> :
+                                            null
+                                }
+                            </div>
+                        </div>
                     )
                 })
                 }
@@ -63,112 +87,3 @@ export default function ActivityPage() {
     );
 }
 
-function PreparedCard({ individualOrderObject, open, setOpen, setSideBarItem }) {
-    const transDate = DateTimeFunctionTH(individualOrderObject.transDate)
-    console.log(transDate)
-    return (
-        <div className="my-2">
-            <div
-                className="flex flex-col border border-slate-700 rounded-lg my-2 mx-2 -z-10"
-                key={individualOrderObject.orderId}
-                onClick={() => { setOpen(true) }}
-            >
-                <div className="grid grid-cols-2">
-                    <div>
-                        <div className="flex flex-row text-sm ml-2">
-                            {transDate}
-                        </div>
-                        <div className="flex ml-2">
-                            {individualOrderObject.shopName}
-                        </div>
-                        <div className="flex ml-2 font-semibold">
-                            Ready to Collect
-                        </div>
-                    </div>
-                    <div className="flex justify-end items-center mr-2">
-                        &#3647;{individualOrderObject.orderTotal}
-                    </div>
-
-                </div>
-                <div className="flex flex-row justify-between px-2">
-                    <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300">
-                        Edit Order
-                    </button>
-                    <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium  text-blue-700 border border-gray-300">Cancel Order</button>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function SubmittedCard({ individualOrderObject, open, setOpen, setSideBarItem }) {
-    const transDate = DateTimeFunctionTH(individualOrderObject.transDate)
-    return (
-        <div className="my-2">
-            <div
-                key={individualOrderObject.orderId}
-                className="flex flex-col border border-slate-700 rounded-lg my-2 mx-2 -z-10"
-                onClick={() => { setOpen(true) }}
-            >
-                <div className="grid grid-cols-2">
-                    <div>
-                        <div className="flex flex-row text-sm ml-2">
-                            {transDate}
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex ml-2">
-                                {individualOrderObject.shopName}
-                            </div>
-                        </div>
-                        <div className="flex ml-2 font-semibold">
-                            Preparing
-                        </div>
-                    </div>
-                    <div className="flex justify-end items-center mr-2">
-                        &#3647;{individualOrderObject.orderTotal}
-                    </div>
-
-                </div>
-                <div className="flex flex-row justify-between px-2">
-                    <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300">Edit Order</button>
-                    <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium  text-blue-700 border border-gray-300">Cancel Order</button>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function CompletedOrdersCard({ individualOrderObject, open, setOpen, setSideBarItem }) {
-    const transDate = DateTimeFunctionTH(individualOrderObject.transDate)
-    console.log(transDate)
-    return (
-        <div className="my-2">
-            <div
-                className="flex flex-col border border-slate-700 rounded-lg my-2 mx-2 -z-10"
-                key={individualOrderObject.orderId}
-                onClick={() => { setOpen(true) }}
-            >
-                <div className="grid grid-cols-2">
-                    <div>
-                        <div className="flex flex-row text-sm ml-2">
-                            {transDate}
-                        </div>
-                        <div className="flex ml-2">
-                            {individualOrderObject.shopName}
-                        </div>
-                        <div className="flex ml-2 font-semibold">
-                            Completed
-                        </div>
-                    </div>
-                    <div className="flex justify-end items-center mr-2">
-                        &#3647;{individualOrderObject.orderTotal}
-                    </div>
-
-                </div>
-                <div className="flex justify-end px-2">
-                    <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300">Reorder</button>
-                </div>
-            </div>
-        </div>
-    )
-}

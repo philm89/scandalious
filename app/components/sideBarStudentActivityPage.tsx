@@ -6,7 +6,7 @@ import { Link } from '@remix-run/react'
 import { SubItems } from '~/@types/types'
 
 export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem }) {
-    console.log(sideBarItem)
+    // console.log(sideBarItem)
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={setOpen}>

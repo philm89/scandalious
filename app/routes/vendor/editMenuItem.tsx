@@ -70,21 +70,17 @@ export default function EditMenuItem({ state }) {
                             <button className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add Sub Item</button>
                         </div>
                     </div>
+                    <div className="fixed bottom-20 min-w-full border-t border-gray-200 px-4 py-2 mx-2 ">
+                        <a
+                            href="/vendor"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        >
+                            Save
+                        </a>
+                    </div>
                 </div>
             </Form>
             <Navbar />
         </main>
     )
 }
-
-
-
-
-
-
-
-
-
-{/* <div className="grid justify-items-end p-2">
-<button onClick={() => setIsEditingItemActive(true)} className="grid z-90 right-4 p-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Edit Item</button>
-</div> */}

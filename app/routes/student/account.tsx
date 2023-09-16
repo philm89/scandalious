@@ -3,6 +3,8 @@ import { QrCodeIcon } from "@heroicons/react/24/outline";
 
 import Navbar from "~/components/navbarStudent";
 
+
+
 export default function Account() {
     return (
         <main className="overflow-hidden h-screen max-h-screen">
