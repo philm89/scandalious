@@ -1,16 +1,17 @@
-
-export default function GetVendorOrders() {
-    const getVendorOrders = [
+export default function GetStudentOrders() {
+    const getStudentOrders = [
         {
             orderId: 1500,
             shopName: "The Canteena",
+            orderTotal: 300,
+            transDate: "2023-09-14T09:46:56+0000",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 2,
-                    group: 1,
                     subItems: [
                         {
                             id: 986689567,
@@ -31,7 +32,6 @@ export default function GetVendorOrders() {
                             id: 1564864,
                             name: "Kai Dao",
                             price: 25,
-                            quantity: 50,
                         },
                     ],
                     requests: "ไม่เผ็ด",
@@ -41,13 +41,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1501,
             shopName: "The Drink Shop",
+            orderTotal: 300,
+            transDate: "2023-08-14T09:46:56+0000",
+            orderStatus: "SUBMITTED",
             items: [
                 {
                     id: 1630,
                     name: "Fanta Orange",
                     price: 15,
                     units: 1,
-                    group: 1,
                     subItems: [],
                     requests: "warm please",
 
@@ -57,7 +59,6 @@ export default function GetVendorOrders() {
                     name: "Coke",
                     price: 15,
                     units: 1,
-                    group: 1,
                     subItems: [],
                     requests: "warm please",
 
@@ -67,13 +68,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1502,
             shopName: "ChaTraMoo",
+            orderTotal: 300,
+            transDate: "2023-07-14T14:36:46+0000",
+            orderStatus: "PREPARED",
             items: [
                 {
                     id: 1620,
                     name: "Pepsi",
                     price: 15,
                     units: 3,
-                    group: 1,
                     subItems: [
                         {
                             id: 986689567,
@@ -89,7 +92,6 @@ export default function GetVendorOrders() {
                     name: "Bubble Tea",
                     price: 30,
                     units: 1,
-                    group: 1,
                     subItems: [
                         {
                             id: 1651,
@@ -114,13 +116,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1503,
             shopName: "Specialty Drinks",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1610,
                     name: "Coke",
                     price: 15,
                     units: 3,
-                    group: 1,
                     subItems: [
                         {
                             id: 986689567,
@@ -135,13 +139,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1504,
             shopName: "Fantasia",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1630,
                     name: "Fanta Orange",
                     price: 15,
                     units: 1,
-                    group: 1,
                     subItems: [],
                     requests: "",
                 },
@@ -150,13 +156,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1505,
             shopName: "The Bubble Tea Shop",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "SUBMITTED",
             items: [
                 {
                     id: 1650,
                     name: "Bubble Tea",
                     price: 30,
                     units: 4,
-                    group: 2,
                     subItems: [],
                     requests: "not cold",
                 },
@@ -165,13 +173,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1506,
             shopName: "Pizza Hut",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "PREPARED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 2,
-                    group: 2,
                     subItems: [
                         {
                             id: 986689567,
@@ -186,13 +196,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1507,
             shopName: "ThipSamai",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 3,
-                    group: 2,
                     subItems: [],
                     requests: "I will murder a pigeon if I see any ice in my cup",
                 },
@@ -201,13 +213,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1508,
             shopName: "Miyazaki",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "COMPLETED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 4,
-                    group: 2,
                     subItems: [
                         {
                             id: 986689567,
@@ -222,13 +236,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1509,
             shopName: "KFC",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "SUBMITTED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 1,
-                    group: 2,
                     subItems: [],
                     requests: "",
                 },
@@ -237,13 +253,15 @@ export default function GetVendorOrders() {
         {
             orderId: 1510,
             shopName: "The Shop with an indredibly long name to demonstrate that we should probably put a character limit on this field",
+            orderTotal: 300,
+            transDate: "1997-07-16T19:20:30.451Z",
+            orderStatus: "PREPARED",
             items: [
                 {
                     id: 1534,
                     name: "Apple Juice",
                     price: 15,
                     units: 1,
-                    group: 2,
                     subItems: [],
                     requests: "make it special",
                 },
@@ -251,5 +269,6 @@ export default function GetVendorOrders() {
         },
 
     ]
-    return getVendorOrders
+    return getStudentOrders
 }
+

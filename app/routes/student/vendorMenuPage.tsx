@@ -16,16 +16,16 @@ export default function VendorMenuPage({ state }) {
     const [selectedItemForSideBar, setSelectedItemForSideBar] = useState([])
     const [basketItems, setBasketItems] = useState()
 
-    useEffect(() => {
-        const basketItems = JSON.parse(localStorage.getItem('basketItems'))
-        if ('basketItems') {
-            setBasketItems(basketItems)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const basketItems = JSON.parse(localStorage.getItem('basketItems'))
+    //     if ('basketItems') {
+    //         setBasketItems(basketItems)
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        localStorage.setItem('basketItems', JSON.stringify(basketItems));
-    }, [basketItems]);
+    // useEffect(() => {
+    //     localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    // }, [basketItems]);
 
 
     return (

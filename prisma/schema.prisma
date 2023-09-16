@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgres"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -8,30 +8,29 @@ generator client {
 }
 
 model User {
-  id                String              @id @default(cuid())
+  id                String              @id @default(cuid()) @map("_id")
   email             String              @unique
-  role              Role        
-  firstName         String              @db.VarChar(50)
-  lastName          String              @db.VarChar(50)
+  role              Role                @default(STUDENT)
+  firstName         String              
+  lastName          String              
+  groupName         GroupName           @default(GROUPA)
   description       String?
   vendorName        String?
+  balance           Int 
+  authToken         String                
 
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
 
-  password          Password?
   orders            Orders[]
+  menuItems         MenuItems[]         @relation("MenuItems")
 }
 
-model Password {
-  hash              String
-
-  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId            String              @unique
-}
 
 model Orders {
-  id                String              @id @default(cuid())
+  id                String              @id @default(cuid()) @map("_id")
+  orderStatus       OrderStatus         
+  statusChangeDate  DateTime
 
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
@@ -42,31 +41,22 @@ model Orders {
 }
 
 model MenuItems {
-  id                String              @id @default(cuid())
+  id                String              @id @default(cuid()) @map("_id")
   name              String      
   price             Int
-  quantity          Int
+  quantity          Int?
   description       String?
+
+  dailyLimit        Int                 @default(0)
   promoted          Boolean             @default(false)
 
-  displayOrder      Int                 @default(autoincrement())
+  displayOrder      Int                 
   menuItemType      MenuItemType
   order             Orders              @relation("Orders", fields: [orderId], references: [id])
   orderId           String
-  // subMenuItems      SubMenuItems[]      @relation("MenuItem")
+  vendorName        User                @relation("MenuItems", fields: [vendorNameId], references: [id])
+  vendorNameId      String
 }
-
-// model SubMenuItems {
-//   id                String              @id @default(cuid())
-//   name              String
-//   price             Int
-//   quantity          Int
-//   description       String?
-
-//   displayOrder      Int                 @default(autoincrement())
-//   mainItem          MenuItems           @relation("MenuItem", fields: [menuItemId], references: [id])
-//   menuItemId        String        
-// }
 
 enum Role {
   STUDENT
@@ -79,4 +69,16 @@ enum Role {
 enum MenuItemType {
   MAINITEM
   SUBITEM
+}
+
+enum OrderStatus {
+  NOTSUBMITTED
+  SUBMITTED
+  PREPARED
+  COMPLETED
+}
+
+enum GroupName {
+  GROUPA
+  GROUPB
 }

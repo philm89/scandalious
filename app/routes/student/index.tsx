@@ -6,7 +6,6 @@ import SearchBox from "~/components/searchBox";
 import Navbar from "~/components/navbarStudent";
 import getVendorMenuLists from "~/utilities/getVendorMenusListForStudents";
 import { VendorMenuList, VendorItemList } from "~/@types/types";
-// import StudentMenuCard from "~/components/studentMenuCard";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 let vendorList: VendorMenuList[] = getVendorMenuLists()
