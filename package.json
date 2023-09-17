@@ -29,6 +29,8 @@
     "/public/build"
   ],
   "dependencies": {
+    "@clerk/remix": "^2.10.2",
+    "@clerk/themes": "^1.7.5",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@prisma/client": "^4.11.0",
