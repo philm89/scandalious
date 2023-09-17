@@ -7,6 +7,7 @@ import { SubItems } from '~/@types/types'
 
 export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem }) {
     // console.log(sideBarItem)
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={setOpen}>
@@ -38,7 +39,17 @@ export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem 
                                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                         <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                                             <div className="flex items-start justify-between">
-                                                <Dialog.Title className="text-2xl font-bold text-gray-900">{sideBarItem.name}</Dialog.Title>
+                                                <Dialog.Title className="text-2xl font-bold text-gray-900">
+                                                    Order Number: <br />
+                                                    <div className="flex text-lg font-normal">
+                                                        {sideBarItem.orderUUID}
+                                                    </div>
+                                                    <div>
+                                                        <p className="flex flex-nowrap text-lg font-semibold">
+                                                            {sideBarItem.shopName}
+                                                        </p>
+                                                    </div>
+                                                </Dialog.Title>
                                                 <div className="ml-3 flex h-7 items-center">
                                                     <button
                                                         type="button"
@@ -58,23 +69,50 @@ export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem 
                                         </div>
                                         <div className="border-t border-gray-200 px-4 py-2">
                                             <div>
-                                                <div className="flex flex-row justify-start">
-                                                    <h3>Note to Vendor</h3>
-                                                    <p className="flex items-center pl-2 text-gray-400 text-sm">Optional</p>
+                                                <div className="flex flex-row justify-between mb-4">
+                                                    <h3>Order Total</h3>
+                                                    <p className="flex justify-end">{sideBarItem.orderTotal}</p>
                                                 </div>
-                                                <input type='text' name='notesToVendor' placeholder='Add your request to the vendor' className="w-full text-sm h-8 border border-gray-100 my-2"></input>
-                                                <div className="flex flex-row justify-center my-2">
-                                                    <MinusIcon className="text-md h-8 border border-slate-300 rounded-md">-</MinusIcon>
-                                                    <div className="flex items-center px-4 text-xl">2</div>
-                                                    <PlusIcon className="text-md h-8 border border-slate-300 rounded-md">+</PlusIcon>
-                                                </div>
+
                                             </div>
+                                            /**
+                                            I need to adjust the Link below to redirect to the dynamic page routing of the vendor name page thingy.
+                                            */
                                             <div className="">
-                                                <button
-                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                                                >
-                                                    Add To Basket - {sideBarItem.price}
-                                                </button>
+                                                {sideBarItem.orderStatus === "SUBMITTED" ?
+                                                    <Link
+                                                        to="/student/vendorMenuPage"
+                                                        state={sideBarItem}
+                                                        className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                    >
+                                                        Update Order
+                                                    </Link> :
+                                                    sideBarItem.orderStatus === "PREPARING" ?
+                                                        <button
+                                                            className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                        >
+                                                            Contact Vendor
+                                                        </button> :
+                                                        sideBarItem.orderStatus === "PREPARED" ?
+                                                            <button
+                                                                className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                            >
+                                                                Contact Vendor
+                                                            </button> :
+                                                            sideBarItem.orderStatus === "COMPLETED" ?
+                                                                <button
+                                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                                >
+                                                                    Reorder
+                                                                </button> :
+                                                                <button
+                                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                                >
+                                                                    Contact Us
+                                                                </button>
+
+                                                }
+
                                             </div>
                                         </div>
                                     </div>
@@ -93,27 +131,45 @@ function MenuCard({ sideBarItem }) {
         <main className="">
             <div className="divide-y divide-gray-200">
                 <div className="flex justify-start">
-                    <p>Add on</p>
-                    <p className="flex items-center pl-2 text-gray-400 text-sm">Optional</p>
+                    <p>Order Details</p>
                 </div>
-                <div>
-                    {sideBarItem.subItems !== undefined ?
-                        sideBarItem.subItems.map((item) => {
-                            return (
-                                <label key={item.id} htmlFor={`subItem_${item.id}`} className="flex justify-between border border-gray-300 rounded-lg px-2 py-2 my-1">
-                                    <div className="flex flex-row items-center">
-                                        <input type="checkbox" id={`subItem_${item.id}`} value={item.id} onChange={addOptionalItem} className="flex items-center"></input>
-                                        <label className="pl-2">{item.name}</label>
-                                    </div>
-                                    <div className="flex flex-row items-center">
-                                        <p className="flex text-lg">+</p>
-                                        <p>{item.price}</p>
-                                    </div>
-                                </label>
-                            )
-                        }) :
-                        null
-                    }
+                <div className="">
+                    {sideBarItem.items.map((item) => {
+                        return (
+                            <div key={item.id} className="pt-2">
+                                <div className='grid grid-cols-5'>
+                                    <p className="grid col-span-1">
+                                        {item.units}x
+                                    </p>
+                                    <p className="grid col-span-3">
+                                        {item.name}
+                                    </p>
+                                    <p className="grid col-span-1 justify-end">
+                                        {item.price}
+                                    </p>
+                                </div>
+                                <div>
+                                    {item.subItems.map((subItem) => {
+                                        return (
+                                            <div key={subItem.id} className="grid grid-cols-5">
+                                                <p className="col-start-2 col-span-3 font-light">
+                                                    {subItem.name}
+                                                </p>
+                                                <p className="grid col-start-5 col-span-1 font-light justify-end">
+                                                    {subItem.price}
+                                                </p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="grid grid-cols-5">
+                                    <p className="col-start-2 col-span-3 italic font-light">
+                                        {item.requests}
+                                    </p>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </main>

@@ -7,6 +7,7 @@ export default function GetStudentOrders() {
     const getStudentOrders = [
         {
             orderId: 1500,
+            orderUUID: "7176b81a-8ec6-4b26",
             shopName: "The Canteena",
             orderTotal: 300,
             createdAt: "2020-09-14T09:46:56+0000",
@@ -45,6 +46,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1501,
+            orderUUID: "64583cb9-4423-4345",
             shopName: "The Drink Shop",
             orderTotal: 300,
             createdAt: "2022-08-13T14:42:56+0000",
@@ -72,6 +74,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1502,
+            orderUUID: "768fca55-bbe1-4918",
             shopName: "ChaTraMoo",
             orderTotal: 300,
             createdAt: "2023-07-12T04:25:56+0000",
@@ -120,10 +123,11 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1503,
+            orderUUID: "2ff482e2-6e3d-44a5",
             shopName: "Specialty Drinks",
             orderTotal: 300,
             createdAt: "2023-06-11T16:17:56+0000",
-            orderStatus: "PREPARED",
+            orderStatus: "SUBMITTED",
             items: [
                 {
                     id: 1610,
@@ -143,10 +147,11 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1504,
+            orderUUID: "0e093314-a9f3-4e49",
             shopName: "Fantasia",
             orderTotal: 300,
             createdAt: "2023-05-10T05:06:56+0000",
-            orderStatus: "COMPLETED",
+            orderStatus: "PREPARED",
             items: [
                 {
                     id: 1630,
@@ -160,6 +165,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1505,
+            orderUUID: "aa698748-cd07-4a4d",
             shopName: "The Bubble Tea Shop",
             orderTotal: 300,
             createdAt: "2023-04-09T22:04:56+0000",
@@ -177,6 +183,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1506,
+            orderUUID: "c99343a5-95d8-4a65",
             shopName: "Pizza Hut",
             orderTotal: 300,
             createdAt: "2023-03-08T05:19:56+0000",
@@ -200,6 +207,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1507,
+            orderUUID: "5a7eb61b-7566-4646",
             shopName: "ThipSamai",
             orderTotal: 300,
             createdAt: "2023-02-07T07:34:56+0000",
@@ -217,6 +225,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1508,
+            orderUUID: "3736ab3b-9d5c-4fbd",
             shopName: "Miyazaki",
             orderTotal: 300,
             createdAt: "2023-01-06T09:38:56+0000",
@@ -240,6 +249,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1509,
+            orderUUID: "eb642b29-25f6-4fa9",
             shopName: "KFC",
             orderTotal: 300,
             createdAt: "2022-01-06T09:38:56+0000",
@@ -257,6 +267,7 @@ export default function GetStudentOrders() {
         },
         {
             orderId: 1510,
+            orderUUID: "cb26cead-2564-4fd7",
             shopName: "The Shop with an indredibly long name to demonstrate that we should probably put a character limit on this field",
             orderTotal: 300,
             createdAt: "2020-01-06T09:38:56+0000",
@@ -276,7 +287,6 @@ export default function GetStudentOrders() {
     ]
 
     const sortedStudentOrders = getStudentOrders.sort((a, b) => -a.createdAt.localeCompare(b.createdAt))
-    console.log(`Get Student Orders Utility Function`, sortedStudentOrders)
     return sortedStudentOrders
 }
 

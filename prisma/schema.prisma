@@ -76,6 +76,7 @@ enum MenuItemType {
 enum OrderStatus {
   NOTSUBMITTED
   SUBMITTED
+  PREPARING
   PREPARED
   COMPLETED
   CANCELLED
