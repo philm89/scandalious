@@ -1,9 +1,13 @@
-import { Link } from "@remix-run/react";
 import { useState, useEffect } from "react";
+import {
+    SignedIn,
+    SignedOut,
+    RedirectToSignIn,
+  } from "@clerk/remix"
 
 import Navbar from "~/components/navbarVendor";
 import OrderCard from "~/components/orderCardVendor"
-import SetLimitSidBar from "~/components/sideBarVendorSetLimits";
+import SetLimitSideBar from "~/components/sideBarVendorSetLimits";
 import calcVendorOrders from "~/utilities/calcVendorOrders";
 import getMenuItemsUtility from "~/utilities/getMenuItems";
 import GetVendorOrders from "~/utilities/getVendorOrders";
@@ -21,19 +25,26 @@ export default function POS() {
     const [orders, setOrders] = useState(vendorOrdersFromUtility)
 
     return (
-        <main className="h-screen max-h-screen">
-            <div className="flex justify-between">
-                <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Activity</h1>
-                <button onClick={() => { setIsOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Set Limits</button>
-            </div>
-            <ul className="grid grid-cols-3 border-b border-slate-300 m-2">
-                <li className="grid justify-center font-bold">New</li>
-                <li className="grid justify-center">Prepared</li>
-                <li className="grid justify-center">Completed</li>
-            </ul>
-            <OrderCard state={menuItems} />
-            <SetLimitSidBar open={isOpen} setOpen={setIsOpen} state={menuItems} />
-            <Navbar />
-        </main>
+        <div>
+            <SignedIn>
+                <main className="h-screen max-h-screen">
+                    <div className="flex justify-between">
+                        <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Activity</h1>
+                        <button onClick={() => { setIsOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Set Limits</button>
+                    </div>
+                    <ul className="grid grid-cols-3 border-b border-slate-300 m-2">
+                        <li className="grid justify-center font-bold">New</li>
+                        <li className="grid justify-center">Prepared</li>
+                        <li className="grid justify-center">Completed</li>
+                    </ul>
+                    <OrderCard state={menuItems} />
+                    <SetLimitSideBar open={isOpen} setOpen={setIsOpen} state={menuItems} />
+                    <Navbar />
+                </main>
+            </SignedIn>
+            <SignedOut>
+                <RedirectToSignIn />
+            </SignedOut>
+        </div>
     )
 }

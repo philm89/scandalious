@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node"
 import {
   Links,
   LiveReload,
@@ -6,22 +6,18 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "@remix-run/react"
+import { rootAuthLoader } from "@clerk/remix/ssr.server"
+import { ClerkApp, V2_ClerkErrorBoundary } from "@clerk/remix"
+import tailwindStylesheetUrl from "./styles/tailwind.css"
 
-import tailwindStylesheetUrl from "./styles/tailwind.css";
-// import { getUser } from "./session.server";
-
+export const loader: LoaderFunction = (args) => rootAuthLoader(args)
+export const ErrorBoundary = V2_ClerkErrorBoundary()
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
-};
+  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }]
+}
 
-// export async function loader({ request }: LoaderArgs) {
-//   return json({
-//     user: await getUser(request),
-//   });
-// }
-
-export default function App() {
+function App() {
   return (
     <html lang="en" className="h-full">
       <head>
@@ -31,11 +27,14 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }
+
+export default ClerkApp(App)
