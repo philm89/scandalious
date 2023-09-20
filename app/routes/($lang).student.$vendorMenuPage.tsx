@@ -1,14 +1,17 @@
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import Navbar from "~/components/navbarStudent";
 import { VendorItemList, VendorMenuList } from "~/@types/types";
-import CheckoutButton from "~/components/checkoutButton";
 import SideBar from "~/components/sideBarStudent"
 
+// export function loader({ params }: LoaderFunctionArgs) {
+//     return fakeDb.getAllConcertsForCity(params.city);
+// }
 
-export default function VendorMenuPage({ state }) {
+export default function VendorMenuPage() {
     const location = useLocation()
     const vendorObject = location.state
 

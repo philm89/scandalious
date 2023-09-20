@@ -20,7 +20,7 @@ export default function ProfilePage() {
                     <button className="flex justify-start mx-2 px-2">Contact Support</button>
                     <ChevronRightIcon className="inline-block h-4 w-4" />
                 </div>
-                <Link to="/student/Account" className="flex flex-row justify-between py-2">
+                <Link to="/student/topUp" className="flex flex-row justify-between py-2">
                     <p className="flex justify-start mx-2 px-2">Top Up</p>
                     <ChevronRightIcon className="inline-block h-4 w-4" />
                 </Link>
