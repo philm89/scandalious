@@ -19,68 +19,93 @@ export default function ActivityPage() {
     const [sideBarItem, setSideBarItem] = useState({})
 
     return (
-        <main className="h-screen max-h-screen">
-            <div className="flex">
-                <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Orders</h1>
+        <main className="bg-gray-300 overscroll-y-contain overflow-hidden">
+            <div className="flex w-full">
+                <h1 className="flex w-full px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Orders</h1>
             </div>
-            <div className="">
+            <div className=" pt-4">
                 {orderList.map((item) => {
                     return (
-                        <div className="flex flex-col border border-slate-700 rounded-lg my-2 mx-2 -z-10"
+                        <div className="flex flex-col border border-slate-100 bg-white rounded-lg my-2 mx-2 -z-10"
                             key={item.orderId}
                             onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
                         >
-                            <div className="grid grid-cols-2">
-                                <div>
-                                    <div className="flex flex-row text-sm ml-2">
-                                        {DateTimeFunctionTH(item.createdAt)}
+                            <div className="">
+                                <div className="divide-y divide-gray-200">
+                                    <div className="py-2">
+                                        <div className="flex flex-row justify-between">
+                                            <div className="flex justify-start text-sm px-2">
+                                                {item.orderUUID}
+                                            </div>
+                                            <div className="flex justify-end text-sm px-2">
+                                                {DateTimeFunctionUS(item.createdAt)}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <p className="flex flex-nowrap max-w-md ml-2">
+                                                {item.shopName}
+                                            </p>
+                                            <div className="flex flex-row px-2">
+                                                <div>
+                                                    &#3647;{item.orderTotal}
+                                                </div>
+                                                <div className="flex px-2">
+                                                    ({item.items.length} items)
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p className="flex flex-nowrap max-w-md ml-2">
-                                        {item.shopName}
-                                    </p>
-                                    <div className="flex ml-2 font-semibold">
-                                        {item.orderStatus === "SUBMITTED" ?
-                                            <p>Waiting For Vendor</p> :
-                                            item.orderStatus === "PREPARING" ?
-                                                <p>Preparing Your Order</p> :
-                                                item.orderStatus === "PREPARED" ?
-                                                    <p>Ready to Collect</p> :
+                                    <div className="grid grid-cols-2 py-2 mx-2">
+                                        <div className="flex text-sm font-semibold items-center">
+                                            {item.orderStatus === "NOTAPPROVED" ?
+                                                <p>Wating for Approval</p> :
+                                                item.orderStatus === "SUBMITTED" ?
+                                                    <p>Waiting For Vendor</p> :
                                                     item.orderStatus === "COMPLETED" ?
                                                         <p>Completed</p> :
-                                                        null
-                                        }
-                                    </div>
-                                </div>
-                                <div className="flex justify-end items-center mr-2">
-                                    &#3647;{item.orderTotal}
-                                </div>
-                            </div>
-                            <div className="">
-                                {item.orderStatus === "SUBMITTED" ?
-                                    <div className="flex flex-row justify-between px-2">
-                                        <button
-                                            className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300"
-                                            onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
-                                        >
-                                            Edit Order
-                                        </button>
-                                        <button className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium  text-blue-700 border border-gray-300">Cancel Order</button>
-                                    </div> :
-                                    item.orderStatus === "PREPARING" ?
-                                        <p className="my-2"></p> :
-                                        item.orderStatus === "PREPARED" ?
-                                            <p className="my-2"></p> :
-                                            item.orderStatus === "COMPLETED" ?
-                                                <div className="flex justify-end px-2">
+                                                        item.orderStatus === "CANCELLED" ?
+                                                            <p>Cancelled</p> :
+                                                            null
+                                            }
+                                        </div>
+                                        <div className="flex justify-end mx-2">
+                                            {item.orderStatus === "NOTAPPROVED" ?
+                                                <div className="flex">
                                                     <button
-                                                        className="w-1/2 rounded-lg p-2 m-2 text-sm font-medium text-blue-700 border border-gray-300"
+                                                        className="rounded w-16 text-sm font-medium text-blue-700 border border-gray-300 mx-2 px-2 py-1"
                                                         onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
                                                     >
-                                                        Reorder</button>
+                                                        Edit
+                                                    </button>
+                                                    <button className="rounded w-16 text-sm font-medium text-blue-700 border border-gray-300 px-2 py-1">Cancel</button>
                                                 </div> :
-                                                <p className="my-2"></p>
-                                }
+                                                item.orderStatus === "SUBMITTED" ?
+                                                    <p className="my-2"></p> :
+                                                    item.orderStatus === "COMPLETED" ?
+                                                        <div className="flex justify-end">
+                                                            <button
+                                                                className="rounded w-16 text-sm font-medium text-blue-700 border border-gray-300 mx-2 px-2 py-1"
+                                                                onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
+                                                            >
+                                                                Rating
+                                                            </button>
+                                                            <button className="rounded w-auto text-sm font-medium text-blue-700 border border-gray-300 px-2 py-1">Reorder</button>
+                                                        </div> :
+                                                        item.orderStatus === "CANCELLED" ?
+                                                            <div className="flex justify-end">
+                                                                <button
+                                                                    className="rounded w-auto text-sm font-medium text-blue-700 border border-gray-300 px-2 py-1"
+                                                                    onClick={() => { setSideBarIsOpen(true); setSideBarItem(item) }}
+                                                                >
+                                                                    Reorder</button>
+                                                            </div> :
+                                                            <p className="my-2"></p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     )
                 })

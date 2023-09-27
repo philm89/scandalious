@@ -75,11 +75,8 @@ export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem 
                                                 </div>
 
                                             </div>
-                                            /**
-                                            I need to adjust the Link below to redirect to the dynamic page routing of the vendor name page thingy.
-                                            */
                                             <div className="">
-                                                {sideBarItem.orderStatus === "SUBMITTED" ?
+                                                {sideBarItem.orderStatus === "NOTAPPROVED" ?
                                                     <Link
                                                         to="/student/vendorMenuPage"
                                                         state={sideBarItem}
@@ -87,29 +84,23 @@ export default function SideBarStudentActivityPage({ open, setOpen, sideBarItem 
                                                     >
                                                         Update Order
                                                     </Link> :
-                                                    sideBarItem.orderStatus === "PREPARING" ?
+                                                    sideBarItem.orderStatus === "SUBMITTED" ?
                                                         <button
                                                             className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                         >
                                                             Contact Vendor
                                                         </button> :
-                                                        sideBarItem.orderStatus === "PREPARED" ?
+                                                        sideBarItem.orderStatus === "COMPLETED" ?
                                                             <button
                                                                 className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                             >
-                                                                Contact Vendor
+                                                                Reorder
                                                             </button> :
-                                                            sideBarItem.orderStatus === "COMPLETED" ?
-                                                                <button
-                                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                                                                >
-                                                                    Reorder
-                                                                </button> :
-                                                                <button
-                                                                    className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                                                                >
-                                                                    Contact Us
-                                                                </button>
+                                                            <button
+                                                                className="flex items-center w-full justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                            >
+                                                                Contact Us
+                                                            </button>
 
                                                 }
 

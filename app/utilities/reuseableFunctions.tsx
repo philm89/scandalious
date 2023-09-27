@@ -9,7 +9,7 @@ export function DateTimeFunctionTH(dateTime) {
 }
 
 export function DateTimeFunctionUS(dateTime) {
-    const convertedDateTime = DateTime.fromISO(dateTime).setLocale('en').toLocaleString({ month: 'short', day: 'numeric', year: '2-digit' })
+    const convertedDateTime = DateTime.fromISO(dateTime).setLocale('en').toLocaleString({ day: 'numeric', month: 'short', year: 'numeric' })
     return convertedDateTime
 }
 

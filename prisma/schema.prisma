@@ -31,8 +31,11 @@ model Orders {
   id                String              @id @default(cuid()) @map("_id")
   orderStatus       OrderStatus         
   statusChangeDate  DateTime
-  canceledBy        User                @relation("CancelledBy", fields: [canceledById], references: [id]) 
-  canceledById      String 
+  // canceledBy        User                @relation("CancelledBy", fields: [canceledById], references: [id]) 
+  // canceledById      String
+  queueId           String              
+  orderUUID         String
+  orderMealTime     MealTime
 
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
@@ -75,11 +78,17 @@ enum MenuItemType {
 
 enum OrderStatus {
   NOTSUBMITTED
+  NOTAPPROVED
   SUBMITTED
-  PREPARING
-  PREPARED
   COMPLETED
   CANCELLED
+}
+
+enum MealTime {
+  BREAKFAST
+  LUNCHA
+  LUNCHB
+  DINNER
 }
 
 enum GroupName {

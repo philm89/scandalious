@@ -6,14 +6,21 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import Navbar from "~/components/navbarStudent";
 import { VendorItemList, VendorMenuList } from "~/@types/types";
 import SideBar from "~/components/sideBarStudent"
+import { json } from "@remix-run/node";
 
-// export function loader({ params }: LoaderFunctionArgs) {
-//     return fakeDb.getAllConcertsForCity(params.city);
+// export async function loader({
+//     params,
+// }: LoaderFunctionArgs) {
+//     const vendorObject = useLocation()
+//     // if (!vendorObject) throw new Response("", { status: 404 })
+//     console.log(`This is showing the loader function on the vendor menu page ${vendorObject}`)
+//     return json(vendorObject)
 // }
 
 export default function VendorMenuPage() {
     const location = useLocation()
     const vendorObject = location.state
+    // const vendorObject = useLoaderData()
 
     const [sideBarIsOpen, setSideBarIsOpen] = useState(false)
     const [selectedItemForSideBar, setSelectedItemForSideBar] = useState([])
