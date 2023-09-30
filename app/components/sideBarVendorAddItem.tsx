@@ -57,8 +57,8 @@ export default function AddMenuItemSideBar({ open, setOpen }) {
                                                 </div>
                                             </div>
                                             <div className="mt-4">
-                                                <Form method="post">
-                                                    <div className="divide-y divide-gray-200">
+                                                <Form method="post" className="divide-y divide-gray-200">
+                                                    <div >
                                                         <div>
                                                             <h1 className="text-md font-medium text-gray-900">Main Item</h1>
                                                             <div className="grid grid-cols-3 mt-2 border-t border-gray-200">
@@ -69,7 +69,11 @@ export default function AddMenuItemSideBar({ open, setOpen }) {
                                                             </div>
                                                         </div>
                                                         <div className="flex flex-row justify-between">
-                                                            <p className="flex justify-start items-center w-3/4 ml-2">Default Daily Limit</p>
+                                                            <p className="flex justify-start items-center w-3/4 ml-2">Daily Limit Group A</p>
+                                                            <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
+                                                        </div>
+                                                        <div className="flex flex-row justify-between">
+                                                            <p className="flex justify-start items-center w-3/4 ml-2">Daily Limit Group B</p>
                                                             <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
                                                         </div>
                                                         <div className="flex flex-row justify-between my-2">
@@ -99,7 +103,7 @@ export default function AddMenuItemSideBar({ open, setOpen }) {
                                             <div className="">
                                                 <a
                                                     onClick={() => setOpen(false)}
-                                                    href="#"
+                                                    href="/vendor"
                                                     className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                                                 >
                                                     Add Item
@@ -128,7 +132,11 @@ function SubItemInputFields() {
                 <input type="number" name="unitPrice" placeholder='15' className="border border-slate-700 rounded pl-2 p-2 -mt-2 text-slate-700"></input>
             </div>
             <div className="flex flex-row justify-between">
-                <p className="flex justify-start items-center w-3/4 ml-2">Default Daily Limit</p>
+                <p className="flex justify-start items-center w-3/4 ml-2">Daily Limit Group A</p>
+                <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
+            </div>
+            <div className="flex flex-row justify-between">
+                <p className="flex justify-start items-center w-3/4 ml-2">Daily Limit Group B</p>
                 <input type="number" name="limit" defaultValue="100" className="border border-slate-700 rounded pl-2 p-2 my-2 text-slate-700 w-1/4"></input>
             </div>
         </div>
