@@ -11,7 +11,7 @@ export default function GetVendorOrders() {
             queueNumber: "BR27",
             orderMealtime: "BREAKFAST",
             shopName: "ChaTraMoo",
-            orderTotal: 300,
+            orderTotal: 100,
             createdAt: "2023-07-12T04:25:56+0000",
             orderStatus: "SUBMITTED",
             items: [
@@ -62,7 +62,7 @@ export default function GetVendorOrders() {
             queueNumber: "LA97",
             orderMealtime: "LUNCHA",
             shopName: "Specialty Drinks",
-            orderTotal: 300,
+            orderTotal: 120,
             createdAt: "2023-06-11T16:17:56+0000",
             orderStatus: "SUBMITTED",
             items: [
@@ -88,7 +88,7 @@ export default function GetVendorOrders() {
             queueNumber: "LB65",
             orderMealtime: "LUNCHB",
             shopName: "Fantasia",
-            orderTotal: 300,
+            orderTotal: 425,
             createdAt: "2023-05-10T05:06:56+0000",
             orderStatus: "SUBMITTED",
             items: [
@@ -108,7 +108,7 @@ export default function GetVendorOrders() {
             queueNumber: "DR65",
             orderMealtime: "DINNER",
             shopName: "The Bubble Tea Shop",
-            orderTotal: 300,
+            orderTotal: 25,
             createdAt: "2023-04-09T22:04:56+0000",
             orderStatus: "CANCELLED",
             items: [
@@ -128,7 +128,7 @@ export default function GetVendorOrders() {
             queueNumber: "BR16",
             orderMealtime: "BREAKFAST",
             shopName: "Pizza Hut",
-            orderTotal: 300,
+            orderTotal: 243,
             createdAt: "2023-03-08T05:19:56+0000",
             orderStatus: "COMPLETED",
             items: [

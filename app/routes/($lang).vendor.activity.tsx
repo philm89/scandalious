@@ -1,5 +1,7 @@
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import { useState, useEffect } from "react";
+import { Dialog } from '@headlessui/react'
+
 
 import Navbar from "~/components/navbarVendor";
 import SetLimitSidBar from "~/components/sideBarVendorSetLimits";
@@ -16,14 +18,14 @@ I am planning on utilizing 2 different states here.  The main one will be for ca
 */
 
 export default function POS() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isSideBarOpen, setIsSideBarOpen] = useState(false)
     const [filteredCategories, setFilteredCategories] = useState(mealTimeTypeEN)
     const [menuItems, setMenuItems] = useState(menuItemsFromUtility)
     const [orders, setOrders] = useState(vendorOrdersFromUtility)
 
     function handleChange(event) {
-        filteredCategories.includes(event.target.id) ?
-            // setFilteredCategories(filteredCategories.reduce((acc, cv) => {...acc, [cv.id] : cv.name})
+        // filteredCategories.includes(event.target.id) ?
+        // setFilteredCategories(filteredCategories.reduce((acc, cv) => {...acc, [cv.id] : cv.name})
         // if (event.target.checked === "true") {
         //     const filtered = orders.filter((mealType) => mealType.orderMealtime === event.target.id)
         // }
@@ -33,32 +35,41 @@ export default function POS() {
         <main className="bg-gray-300 overscroll-y-contain overflow-hidden">
             <div className="flex justify-between w-full bg-white">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Activity</h1>
-                <button onClick={() => { setIsOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Set Limits</button>
+                <button onClick={() => { setIsSideBarOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Set Limits</button>
             </div>
             <ButtonGroup handleChange={handleChange} />
             <OrderCard state={orders} />
-            <SetLimitSidBar open={isOpen} setOpen={setIsOpen} state={menuItems} />
+            <SetLimitSidBar open={isSideBarOpen} setOpen={setIsSideBarOpen} state={menuItems} />
             <Navbar />
         </main>
     )
 }
 
 export function OrderCard({ state }) {
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     return (
-        <main className="">
+        <div className="grid grid-cols-2 mx-2">
             {state.map((item) => {
                 return (
-                    <Link key={item.orderId} state={state} to="/vendor/orders" >
-                        <div className="flex flex-col border border-slate-100 bg-white rounded-lg my-2 mx-2 -z-10">
-                            <div>
-                                {item.queueNumber}
+                    <button key={item.orderId} onClick={() => { setIsModalOpen(true) }}>
+                        <div className=" border border-slate-100 bg-white rounded-lg mt-2 mx-1 -z-10">
+                            <div className="flex flex-col">
+                                <p className="flex justify-center text-lg font-bold">
+                                    {item.queueNumber}
+                                </p>
+                                <p className="flex justify-center">
+                                    &#3647;{item.orderTotal}
+                                </p>
+
                             </div>
                         </div>
-                    </Link>
+                    </button>
                 )
             })}
-        </main>
+            <Modal open={isModalOpen} setOpen={setIsModalOpen} state={state} />
+
+        </div>
     )
 }
 
@@ -90,5 +101,28 @@ export function ButtonGroup({ handleChange }) {
                 })}
             </div>
         </form>
+    )
+}
+
+export function Modal({ open, setOpen, state }) {
+
+    return (
+        <Dialog open={open} onClose={() => { setOpen(false) }} className="flex h-screen justify-center items-center backdrop-opacity-80 bg-slate-50/80 fixed inset-0 z-50">
+            <Dialog.Panel>
+                <Dialog.Title>Order Details</Dialog.Title>
+                <Dialog.Description>
+                    <p>{state.orderId}</p>
+                </Dialog.Description>
+                <div>
+                    <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={() => { setOpen(false) }}
+                    >
+                        Cancel Order
+                    </button>
+                </div>
+            </Dialog.Panel>
+        </Dialog >
     )
 }
