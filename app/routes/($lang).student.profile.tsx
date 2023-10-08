@@ -5,7 +5,7 @@ import { Link } from "@remix-run/react";
 export default function ProfilePage() {
 
     return (
-        <main className="overflow-hidden h-screen max-h-screen">
+        <main className="overflow-y-auto h-screen max-h-screen">
             <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Profile Page</h1>
             <div className="flex flex-row">
                 <UserCircleIcon className="inline-block justify-items-center h-20 w-20 mx-6" />

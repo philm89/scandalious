@@ -19,7 +19,7 @@ export default function ActivityPage() {
     const [sideBarItem, setSideBarItem] = useState({})
 
     return (
-        <main className="bg-gray-300 overscroll-y-contain overflow-hidden">
+        <main className="bg-gray-300 overflow-y-auto h-screen max-h-screen">
             <div className="flex w-full">
                 <h1 className="flex w-full px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Orders</h1>
             </div>

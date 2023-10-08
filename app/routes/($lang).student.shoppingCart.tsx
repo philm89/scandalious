@@ -13,7 +13,7 @@ export default function ShoppingCart({ state }) {
 
 
     return (
-        <main className="overflow-hidden h-screen max-h-screen">
+        <main className="overflow-y-auto h-screen max-h-screen">
             <div className="flex justify-between">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Shopping Cart</h1>
             </div>
