@@ -13,7 +13,7 @@ export default function ShoppingCart({ state }) {
 
 
     return (
-        <main className="overflow-hidden h-screen max-h-screen">
+        <main className="overflow-y-auto h-screen max-h-screen">
             <div className="flex justify-between">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Shopping Cart</h1>
             </div>
@@ -78,7 +78,7 @@ export default function ShoppingCart({ state }) {
                 </div>
             </div>
 
-            <Link to="/student/Activity" state={basketItems} className="grid content-end p-10">
+            <Link to="/student/activity" className="grid content-end p-10">
                 <button onClick={() => clearLocalStorage} className="fixed z-90 bottom-20 right-4 p-0 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Submit Order</button>
             </Link>
             <Navbar />

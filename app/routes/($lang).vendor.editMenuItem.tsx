@@ -10,9 +10,16 @@ export default function EditMenuItem({ state }) {
     const [toggleSwitch, setToggleSwitch] = useState(false)
 
     return (
-        <main className="h-screen max-h-screen">
+        <main className="overflow-y-auto h-screen max-h-screen">
             <div className="flex justify-between top-0 px-4">
-                <h1 className="flex top-0 px-4 justify-start items-center h-16 bg-white font-bold text-2xl">Edit Item </h1>
+                <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Edit Item</h1>
+                <a
+                    href="/vendor"
+                    className="flex justify-center right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded"
+                >
+                    Save
+                </a>
+
             </div>
             <Form>
                 <div className="px-4 divide-y divide-gray-200">
@@ -66,7 +73,7 @@ export default function EditMenuItem({ state }) {
                             }) :
                             undefined
                         }
-                        <div className="flex justify-end mt-2">
+                        <div className="flex justify-end my-2">
                             <button className="flex bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Add Sub Item</button>
                         </div>
                     </div>
@@ -76,15 +83,3 @@ export default function EditMenuItem({ state }) {
         </main>
     )
 }
-
-
-
-
-
-
-
-
-
-{/* <div className="grid justify-items-end p-2">
-<button onClick={() => setIsEditingItemActive(true)} className="grid z-90 right-4 p-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Edit Item</button>
-</div> */}

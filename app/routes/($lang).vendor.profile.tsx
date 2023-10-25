@@ -4,7 +4,7 @@ import Navbar from "~/components/navbarVendor";
 
 export default function Index() {
     return (
-        <main className="flex flex-col pt-28 overflow-hidden h-screen max-h-screen">
+        <main className="flex flex-col pt-28 overflow-y-auto h-screen max-h-screen">
             <div className="flex justify-center h-56 py-4 content-center">
                 <div className="flex justify-center h-32 w-44 border border-slate-700 rounded-xl flex-wrap">
                     <h1 className="flex justify-center items-center text-center px-5">

@@ -1,31 +1,41 @@
 import { Link, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import Navbar from "~/components/navbarStudent";
 import { VendorItemList, VendorMenuList } from "~/@types/types";
-import CheckoutButton from "~/components/checkoutButton";
 import SideBar from "~/components/sideBarStudent"
+import { json } from "@remix-run/node";
 
+// export async function loader({
+//     params,
+// }: LoaderFunctionArgs) {
+//     const vendorObject = useLocation()
+//     // if (!vendorObject) throw new Response("", { status: 404 })
+//     console.log(`This is showing the loader function on the vendor menu page ${vendorObject}`)
+//     return json(vendorObject)
+// }
 
-export default function VendorMenuPage({ state }) {
+export default function VendorMenuPage() {
     const location = useLocation()
     const vendorObject = location.state
+    // const vendorObject = useLoaderData()
 
     const [sideBarIsOpen, setSideBarIsOpen] = useState(false)
     const [selectedItemForSideBar, setSelectedItemForSideBar] = useState([])
     const [basketItems, setBasketItems] = useState()
 
-    useEffect(() => {
-        const basketItems = JSON.parse(localStorage.getItem('basketItems'))
-        if ('basketItems') {
-            setBasketItems(basketItems)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const basketItems = JSON.parse(localStorage.getItem('basketItems'))
+    //     if ('basketItems') {
+    //         setBasketItems(basketItems)
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        localStorage.setItem('basketItems', JSON.stringify(basketItems));
-    }, [basketItems]);
+    // useEffect(() => {
+    //     localStorage.setItem('basketItems', JSON.stringify(basketItems));
+    // }, [basketItems]);
 
 
     return (

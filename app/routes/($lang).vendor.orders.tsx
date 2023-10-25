@@ -7,13 +7,12 @@ import GetVendorOrders from "~/utilities/getVendorOrders";
 
 let vendorOrdersFromUtility = GetVendorOrders()
 
-
 export default function Orders() {
     // const location = useLocation()
     // const menuItem = location.state
     // console.log(menuItem)
     const [orders, setOrders] = useState(vendorOrdersFromUtility)
-    console.log(orders)
+    // console.log(orders)
 
     return (
         <main>

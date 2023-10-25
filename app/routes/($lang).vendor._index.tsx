@@ -19,7 +19,7 @@ export default function Menu() {
     const [menu, setMenu] = useState(menuItemsWithOrderAdded)
 
     return (
-        <main className="h-screen max-h-screen">
+        <main className="overflow-y-auto h-screen max-h-screen">
             <div className="flex justify-between">
                 <h1 className="flex px-8 justify-start items-center h-16 bg-white font-bold text-2xl">Menu Items</h1>
                 <button onClick={() => { setIsOpen(true) }} className="right-4 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 mt-4 mb-2 mx-4 rounded">Add Item</button>
