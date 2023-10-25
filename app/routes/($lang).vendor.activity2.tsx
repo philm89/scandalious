@@ -5,11 +5,22 @@ import GetVendorOrders from "~/utilities/getVendorOrders";
 import getMenuItemsUtility from "~/utilities/getMenuItems";
 import { MealTimeTypeEN, MealTimeTypeTH } from '~/utilities/getMealTimeType';
 
+let vendorOrders = async function () {
+    const orders = await GetVendorOrders()
+    return orders
+}
+async function vendorOrdersFromUtilityAsync(): Promise<any> {
+    const orders = await GetVendorOrders()
+    return orders
+}
+// console.log(`what are all the orders? `, orders)
+// return orders.filter(order => order.orderMealtime === mealType)
 
-let vendorOrdersFromUtility = GetVendorOrders()
-vendorOrdersFromUtility.filter((orders) => {
-    return orders.orderMealtime === "BREAKFAST"
-})
+function filterOrders(ordersArray: [], mealType: string) {
+    // let filtered = ordersArray.filter(order => order.orderMealtime === mealType)
+}
+// console.log(vendorOrdersFromUtility)
+
 let menuItemsFromUtility = getMenuItemsUtility()
 
 function classNames(...classes) {
@@ -18,57 +29,15 @@ function classNames(...classes) {
 
 export default function ActivityPage() {
     const [isSideBarOpen, setIsSideBarOpen] = useState(false)
-    const [orders, setOrders] = useState(vendorOrdersFromUtility)
+    const [orders, setOrders] = useState(vendorOrders)
+    console.log(`What is the async function returning`, orders)
 
     let [categories] = useState({
-        All: [
-            {
-                id: 1,
-                title: 'Does drinking coffee make you smarter?',
-                date: '5h ago',
-                commentCount: 5,
-                shareCount: 2,
-            },
-            {
-                id: 2,
-                title: "So you've bought coffee... now what?",
-                date: '2h ago',
-                commentCount: 3,
-                shareCount: 2,
-            },
-        ],
-        Breakfast: [
-            {
-                id: 1,
-                title: 'Is tech making coffee better or worse?',
-                date: 'Jan 7',
-                commentCount: 29,
-                shareCount: 16,
-            },
-            {
-                id: 2,
-                title: 'The most innovative things happening in coffee',
-                date: 'Mar 19',
-                commentCount: 24,
-                shareCount: 12,
-            },
-        ],
-        Trending: [
-            {
-                id: 1,
-                title: 'Ask Me Anything: 10 answers to your questions about coffee',
-                date: '2d ago',
-                commentCount: 9,
-                shareCount: 5,
-            },
-            {
-                id: 2,
-                title: "The worst advice we've ever heard about coffee",
-                date: '4d ago',
-                commentCount: 1,
-                shareCount: 2,
-            },
-        ],
+        // All: vendorOrdersFromUtility('BREAKFAST' || 'LUNCHA' || 'LUNCHB' || 'DINNER'),
+        Breakfast: filterOrders(orders, 'BREAKFAST'),
+        LUNCHA: filterOrders(orders, 'LUNCHA'),
+        LUNCHB: filterOrders(orders, 'LUNCHB'),
+        Dinner: filterOrders(orders, 'DINNER'),
     })
 
     return (
@@ -97,7 +66,7 @@ export default function ActivityPage() {
                     ))}
                 </Tab.List>
                 <Tab.Panels className="mt-2">
-                    {Object.values(categories).map((posts, idx) => (
+                    {Object.values(categories).map((orders, idx) => (
                         <Tab.Panel
                             key={idx}
                             className={classNames(
@@ -105,34 +74,13 @@ export default function ActivityPage() {
                                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
                             )}
                         >
-                            <ul>
-                                {posts.map((post) => (
-                                    <li
-                                        key={post.id}
-                                        className="relative rounded-md p-3 hover:bg-gray-100"
-                                    >
-                                        <h3 className="text-sm font-medium leading-5">
-                                            {post.title}
-                                        </h3>
-
-                                        <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                                            <li>{post.date}</li>
-                                            <li>&middot;</li>
-                                            <li>{post.commentCount} comments</li>
-                                            <li>&middot;</li>
-                                            <li>{post.shareCount} shares</li>
-                                        </ul>
-
-                                        <a
-                                            href="#"
-                                            className={classNames(
-                                                'absolute inset-0 rounded-md',
-                                                'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2'
-                                            )}
-                                        />
+                            {/* <ul>
+                                {orders.map(() => {
+                                    <li key={orders.id}>
+                                        {orders.queueNumber}
                                     </li>
-                                ))}
-                            </ul>
+                                })}
+                            </ul> */}
                         </Tab.Panel>
                     ))}
                 </Tab.Panels>
